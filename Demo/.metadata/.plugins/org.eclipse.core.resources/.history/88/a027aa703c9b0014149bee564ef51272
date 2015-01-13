@@ -1,0 +1,43 @@
+package com.steamrankings;
+
+import java.io.IOException;
+
+import org.apache.http.Header;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.params.ClientPNames;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+// HTTP requests handled by the controller
+// You identify controllers in Spring by using the annotation @Controller
+@Controller
+public class ProfileController {
+	// This annotation sets that the HTTP requests of /profile are handled by the getProfile method
+	@RequestMapping("/profile")
+	public String getProfile(@RequestParam(value="id", required=false, defaultValue="76561197965726621") String id, Model model) {
+		DefaultHttpClient httpClient = new DefaultHttpClient();
+        httpClient.getParams().setBooleanParameter(ClientPNames.HANDLE_AUTHENTICATION, false);
+        HttpGet request = new HttpGet("http://localhost:6789/getSteamID?id=" + id);
+        
+        try {
+			HttpResponse response = httpClient.execute(request);
+			Header[] headers = response.getAllHeaders();
+			System.out.println(headers);
+					
+		} catch (ClientProtocolException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+		model.addAttribute("message", id);
+		return "profile";
+	}
+}
