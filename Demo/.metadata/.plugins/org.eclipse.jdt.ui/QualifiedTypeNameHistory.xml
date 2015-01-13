@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="com.github.koraktor.steamcondenser.steam.SteamPlayer"/>
-<fullyQualifiedTypeName name="com.github.koraktor.steamcondenser.steam.community.WebApi"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="java.util.Map"/>
 <fullyQualifiedTypeName name="javax.sound.midi.ControllerEventListener"/>
 <fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
+<fullyQualifiedTypeName name="org.json.JSONObject"/>
+<fullyQualifiedTypeName name="com.github.koraktor.steamcondenser.steam.community.WebApi"/>
+<fullyQualifiedTypeName name="org.json.JSONArray"/>
+<fullyQualifiedTypeName name="org.apache.http.Header"/>
+<fullyQualifiedTypeName name="org.apache.http.HttpEntity"/>
+<fullyQualifiedTypeName name="java.io.InputStream"/>
+<fullyQualifiedTypeName name="org.apache.commons.compress.utils.IOUtils"/>
+<fullyQualifiedTypeName name="org.apache.tomcat.util.http.fileupload.IOUtils"/>
 </qualifiedTypeNameHistroy>
