@@ -1,0 +1,5 @@
+package com.steamrankings;
+
+public class SteamrollerApi {
+
+}
