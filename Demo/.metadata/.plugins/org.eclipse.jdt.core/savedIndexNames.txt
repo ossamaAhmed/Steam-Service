@@ -1,5 +1,0 @@
-INDEX VERSION 1.127+F:\SteamTest\SteamRankings\Demo\.metadata\.plugins\org.eclipse.jdt.core
-4241156445.index
-144748932.index
-1753661303.index
-4188880356.index
