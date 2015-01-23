@@ -1,4 +1,4 @@
-package com.steamrankings;
+package com.steamrankings.main;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

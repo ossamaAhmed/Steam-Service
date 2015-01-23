@@ -1,4 +1,4 @@
-package com.steamrankings;
+package com.steamrankings.main;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.SpringApplication;

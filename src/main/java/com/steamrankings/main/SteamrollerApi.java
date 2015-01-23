@@ -1,4 +1,4 @@
-package com.steamrankings;
+package com.steamrankings.main;
 
 import com.github.koraktor.steamcondenser.exceptions.WebApiException;
 import com.github.koraktor.steamcondenser.steam.community.WebApi;
