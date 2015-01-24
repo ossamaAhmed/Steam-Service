@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.steamrankings.main.SteamrollerApi;
+import com.steamrankings.website.SteamrollerApi;
 
 // HTTP requests handled by the controller
 // You identify controllers in Spring by using the annotation @Controller
@@ -54,7 +54,7 @@ public class ProfileController {
 	public Map<String, String> getSteamNameFromId(String id) throws Exception {
 		// Replace XXXXX with the Steam API key found on OneDrive in ECSE 428 Project\API examples\apikey.txt
 		// PLEASE DO NOT PUSH TO GITHUB WITH API KEY IN CODE
-		SteamrollerApi api = new SteamrollerApi("B14A5DC1B77DC531F881389B045B8495");
+		SteamrollerApi api = new SteamrollerApi("XXXX");
 		Map<String, Object> param = new HashMap<String, Object>();
 		System.out.println(id);
 		
