@@ -72,5 +72,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="F:/Projects/SteamRankings/SteamRankingsService/target/SteamRankingsService-1.0-SNAPSHOT-api.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

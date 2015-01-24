@@ -28,7 +28,7 @@ public class ProfileController {
 			model.addAttribute("url", "http://steamcommunity.com");
 			return "profile";
 		}
-
+		
 		Map<String, String> map = null;
 		try {
 			map = getSteamNameFromId(id);
