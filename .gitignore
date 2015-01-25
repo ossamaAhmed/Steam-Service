@@ -4,7 +4,7 @@
 .mtj.tmp/
 
 # Package Files #
-#*.jar
+*.jar
 *.war
 *.ear
 
@@ -14,4 +14,5 @@ hs_err_pid*
 # Folders
 .metadata
 .settings
+.DS_Store
 target
