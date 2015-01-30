@@ -54,7 +54,7 @@ public class ProfileController {
 	public Map<String, String> getSteamNameFromId(String id) throws Exception {
 		// Replace XXXXX with the Steam API key found on OneDrive in ECSE 428 Project\API examples\apikey.txt
 		// PLEASE DO NOT PUSH TO GITHUB WITH API KEY IN CODE
-		SteamrollerApi api = new SteamrollerApi("XXXX");
+		SteamrollerApi api = new SteamrollerApi("XXXXX");
 		Map<String, Object> param = new HashMap<String, Object>();
 		System.out.println(id);
 		
