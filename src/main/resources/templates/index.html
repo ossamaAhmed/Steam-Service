@@ -1,13 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+  <link type="text/css" rel="stylesheet" href="../assets/css/main.css" th:href="@{/assets/css/main.css}" />
+
+  <script src="../assets/js/lib/jquery.1.10.2.min.js" th:href="@{/assets/js/lib/jquery.1.10.2.min.js}"></script>
+
+  <script type="text/javascript" src="../assets/js/main.js" th:href="@{/assets/js/main.js}"></script>
   <title>Rank My Steam</title>
 </head>
 <body>
-  <p>Want to add your name to Rank My Steam?
+  <h1>Want to add your name to Rank My Steam?
   <br /> Enter your name Steam ID here.
-  </p>
+  </h1>
 
+  <h1>1. Test CSS</h1>
+  
+  <h2>2. Test JS</h2>
+  <div id="msg"></div>
   <!-- some sort of form to take in data  - to do 
   <form action="demo_form.asp">   </form> -->
   <p>
