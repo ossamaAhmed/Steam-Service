@@ -5,25 +5,61 @@
 
   <link type="text/css" rel="stylesheet" href="../assets/css/main.css" th:href="@{/assets/css/main.css}" />
 
-  <script src="../assets/js/lib/jquery.1.10.2.min.js" th:href="@{/assets/js/lib/jquery.1.10.2.min.js}"></script>
+  <link type="text/css" rel='stylesheet' href="../assets/css/lib/bootstrap.min.css" th:href="@{/assets/css/lib/bootstrap.min.css}" />
 
-  <script type="text/javascript" src="../assets/js/main.js" th:href="@{/assets/js/main.js}"></script>
+  <script src="../assets/js/lib/jquery.1.10.2.min.js" th:src="@{/assets/js/lib/jquery.1.10.2.min.js}"></script>
+
+  <script type="text/javascript" src="../assets/js/main.js" th:src="@{/assets/js/main.js}"></script>
+
   <title>Rank My Steam</title>
 </head>
 <body>
-  <h1>Want to add your name to Rank My Steam?
-  <br /> Enter your name Steam ID here.
-  </h1>
+   <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Rank My Steam</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="./leaderboard.html">Leaderboard</a></li>
+            <li><a href="./profile">Profile</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
 
-  <h1>1. Test CSS</h1>
-  
-  <h2>2. Test JS</h2>
-  <div id="msg"></div>
-  <!-- some sort of form to take in data  - to do 
-  <form action="demo_form.asp">   </form> -->
-  <p>
-  <input type="text" name="SteamID" value="Your Steam ID Here" /><br />
-  <input type="submit" value="Submit" />
-  </p>
+    <div class="container">
+
+      <div class="starter-template">
+        <h1>Want to add your name to Rank My Steam?
+        <br /> Enter your name Steam ID here.
+        </h1>
+
+        <div id="msg"></div>
+        <!-- some sort of form to take in data  - to do 
+        <form action="demo_form.asp">   </form> -->
+        <p class="lead">
+        <input type="text" name="SteamID" value="Your Steam ID Here" /><br />
+        <input type="submit" value="Submit" />
+        </p>
+      </div>
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+    <script src="../assets/js/lib/bootstrap.min.js" th:src="@{/assets/js/lib/bootstrap.min.js}"></script> 
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../assets/js/lib/ie10-viewport-bug-workaround.js" th:src="@{assets/js/lib/ie10-viewport-bug-workaround.js}"></script>
 </body>
 </html>
