@@ -40,6 +40,12 @@
 			<artifactId>steam-condenser</artifactId>
 			<version>1.3.8</version>
 		</dependency>
+		<dependency>
+		<groupId>com.steamrankings</groupId>
+			<artifactId>SteamRankingsService</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		
 	</dependencies>
 
 	<properties>
@@ -70,6 +76,10 @@
 	</build>
 
 	<repositories>
+		<repository>
+			<id>SteamRankingsService.api</id>
+			<url>http://mikemontreal.ignorelist.com:43002/api</url>
+		</repository>
 		<repository>
 			<id>spring-milestone</id>
 			<url>https://repo.spring.io/libs-release</url>
