@@ -11,6 +11,9 @@
 
   <script src="../assets/js/lib/jquery.1.10.2.min.js" th:src="@{/assets/js/lib/jquery.1.10.2.min.js}"></script>
 
+  <script src="../assets/js/leaderboard.js" th:src="@{/assets/js/leaderboard.js"></script>
+  
+
   <title>Rank My Steam</title>
 </head>
 <body>
@@ -38,7 +41,7 @@
     <div class="container">     
       <div class="starter-template">
         <p>Overall Leaderboard</p>
-        <table>
+        <table id="leaderboard-table">
           <thead>
             <tr>
               <th>Rank</th>
@@ -56,155 +59,9 @@
               <td>...</td>
               <td>...</td>
             </tr>
-                        <tr>
-              <th th:text="${rank1}" />
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-            </tr>
-                        <tr>
-              <th th:text="${rank1}" />
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-            </tr>
-                        <tr>
-              <th th:text="${rank1}" />
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-            </tr>
-                        <tr>
-              <th th:text="${rank1}" />
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-            </tr>
-                        <tr>
-              <th th:text="${rank1}" />
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-            </tr>
-                        <tr>
-              <th th:text="${rank1}" />
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-            </tr>
-                        <tr>
-              <th th:text="${rank1}" />
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-            </tr>
-                        <tr>
-              <th th:text="${rank1}" />
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-            </tr>
-                        <tr>
-              <th th:text="${rank1}" />
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-            </tr>
-                        <tr>
-              <th th:text="${rank1}" />
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-            </tr>
-                        <tr>
-              <th th:text="${rank1}" />
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-            </tr>
-                        <tr>
-              <th th:text="${rank1}" />
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-            </tr>
-                        <tr>
-              <th th:text="${rank1}" />
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-            </tr>
-                        <tr>
-              <th th:text="${rank1}" />
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-            </tr>
-                        <tr>
-              <th th:text="${rank1}" />
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-            </tr>
-                        <tr>
-              <th th:text="${rank1}" />
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-            </tr>
-                        <tr>
-              <th th:text="${rank1}" />
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-            </tr>
-                        <tr>
-              <th th:text="${rank1}" />
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-            </tr>
-                        <tr>
-              <th th:text="${rank1}" />
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-            </tr>
-                        <tr>
-              <th th:text="${rank1}" />
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-            </tr>
-                        <tr>
-              <th th:text="${rank1}" />
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-            </tr>
           </tbody>
-        </table>          
+        </table>
+        <button onclick="addRow()">Add row</button>        
       </div>
     </div><!-- /.container -->
 
