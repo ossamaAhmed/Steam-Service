@@ -1,10 +1,10 @@
 function addRow() {
 	$("#leaderboard-table tbody").append(
-		"<tr>" + "<th th:text='${rank1}'/>" +
-		"<td>...</td>" +
-		"<td>...</td>" +
-		"<td>...</td>" +
-		"<td>...</td>");
+		"<tr>" + "<th th:text='${rank2}'/>" +
+		"<td th:text='${name2}' />" +
+		"<td th:text='${achievement2}' />" +
+		"<td th:text='${time2}' />" +
+		"<td th:text='${country2}' />");
 };
 
 // function save() {

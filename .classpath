@@ -13,6 +13,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry excluding="**/*.java" including="**/*.java" kind="src" path="src/main/resources"/>
+	<classpathentry kind="src" path="src/main/webapp"/>
 	<classpathentry kind="var" path="M2_REPO/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar"/>
 	<classpathentry kind="var" path="M2_REPO/junit/junit/3.8.1/junit-3.8.1.jar" sourcepath="M2_REPO/junit/junit/3.8.1/junit-3.8.1-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/springframework/boot/spring-boot-starter-thymeleaf/1.1.10.RELEASE/spring-boot-starter-thymeleaf-1.1.10.RELEASE.jar"/>
@@ -72,5 +73,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry combineaccessrules="false" kind="src" path="/SteamRankingsService"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
