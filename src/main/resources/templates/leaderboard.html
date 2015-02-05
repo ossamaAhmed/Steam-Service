@@ -11,7 +11,7 @@
 
   <script src="../assets/js/lib/jquery.1.10.2.min.js" th:src="@{/assets/js/lib/jquery.1.10.2.min.js}"></script>
 
-  <script src="../assets/js/leaderboard.js" th:src="@{/assets/js/leaderboard.js}"></script>
+  <!-- // <script src="../assets/js/leaderboard.js" th:src="@{/assets/js/leaderboard.js}"></script> -->
   
 
   <title>Rank My Steam</title>
@@ -47,25 +47,23 @@
               <th>Rank</th>
               <th>Name</th>
               <th># of achievements</th>
-              <th>Total time played</th>
+              <th>Average Completion Rate</th>
               <th>Country</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th th:text="${rank1}" />
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
+            <tr th:each="rankentry : ${rankentries}">
+              <th th:text="${rankentry.rankNumber}">0</th>
+              <td th:text="${rankentry.name}">SteamTroller</td>
+              <td th:text="${rankentry.totalNumberOfAchievements}">0</td>
+              <td th:text="${rankentry.averageCompletionRate}">100</td>
+              <td th:text="${rankentry.country}">What Country</td>
             </tr>
           </tbody>
         </table>
-        <button onclick="addRow()">Add row</button>        
+        <!-- <button onclick="addRow()">Add row</button>         -->
       </div>
     </div><!-- /.container -->
-
-
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
