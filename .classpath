@@ -74,5 +74,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry combineaccessrules="false" kind="src" path="/SteamRankingsService"/>
+	<classpathentry kind="lib" path="SteamRankingsService-1.0-SNAPSHOT-api.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

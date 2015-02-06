@@ -55,9 +55,9 @@
             <tr th:each="rankentry : ${rankentries}">
               <th th:text="${rankentry.rankNumber}">0</th>
               <td th:text="${rankentry.name}">SteamTroller</td>
-              <td th:text="${rankentry.totalNumberOfAchievements}">0</td>
-              <td th:text="${rankentry.averageCompletionRate}">100</td>
-              <td th:text="${rankentry.country}">What Country</td>
+              <td th:text="${rankentry.achievementsTotal}">0</td>
+              <td th:text="${rankentry.completionRate}">100</td>
+              <td th:text="${rankentry.countryCode}">What Country</td>
             </tr>
           </tbody>
         </table>
