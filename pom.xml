@@ -14,7 +14,7 @@
 			<artifactId>SteamRankingsService</artifactId>
 			<version>1.0-SNAPSHOT</version>
 			<scope>system</scope>
-			<systemPath>F:\Projects\SteamRankings\SteamRankingsWebsite\SteamRankingsService-1.0-SNAPSHOT-api.jar</systemPath>
+			<systemPath>${basedir}/SteamRankingsService-1.0-SNAPSHOT-api.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
