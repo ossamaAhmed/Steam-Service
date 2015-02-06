@@ -13,8 +13,9 @@
 			<groupId>com.steamrankings</groupId>
 			<artifactId>SteamRankingsService</artifactId>
 			<version>1.0-SNAPSHOT</version>
-			<scope>compile</scope>
-		</dependency>		
+			<scope>system</scope>
+			<systemPath>F:\Projects\SteamRankings\SteamRankingsWebsite\SteamRankingsService-1.0-SNAPSHOT-api.jar</systemPath>
+		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -46,13 +47,9 @@
 			<artifactId>steam-condenser</artifactId>
 			<version>1.3.8</version>
 		</dependency>
-		<!-- <dependency>
-		 <groupId>com.steamrankings</groupId>
-			<artifactId>SteamRankingsService</artifactId>
-			<version>1.0-SNAPSHOT</version>
-		</dependency>
-		-->
-		
+		<!-- <dependency> <groupId>com.steamrankings</groupId> <artifactId>SteamRankingsService</artifactId> 
+			<version>1.0-SNAPSHOT</version> </dependency> -->
+
 	</dependencies>
 
 	<properties>
@@ -83,12 +80,13 @@
 	</build>
 
 	<repositories>
-	<!--
+		<!-- <repository> <id>com.steamrankings</id> <url>http://mikemontreal.ignorelist.com:43002/api</url> 
+			</repository> -->
+
 		<repository>
-			<id>com.steamrankings</id>
-			<url>http://mikemontreal.ignorelist.com:43002/api</url>
+			<id>my-local-repo</id>
+			<url>file://F:\Projects\SteamRankings\SteamRankingsWebsite\</url>
 		</repository>
-	-->
 		<repository>
 			<id>spring-milestone</id>
 			<url>https://repo.spring.io/libs-release</url>
@@ -96,17 +94,14 @@
 	</repositories>
 
 	<pluginRepositories>
-	<!--
-		<pluginRepository>
-			<id>com.steamrankings</id>
-			<url>http://mikemontreal.ignorelist.com:43002/api</url>
-		</pluginRepository> -->
+		<!-- <pluginRepository> <id>com.steamrankings</id> <url>http://mikemontreal.ignorelist.com:43002/api</url> 
+			</pluginRepository> -->
 		<pluginRepository>
 			<id>spring-milestone</id>
 			<url>https://repo.spring.io/libs-release</url>
 		</pluginRepository>
-		
+
 	</pluginRepositories>
-	
+
 
 </project>
