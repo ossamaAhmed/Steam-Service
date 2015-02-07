@@ -39,12 +39,7 @@
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
 			<version>4.2.5</version>
-		</dependency>
-		<dependency>
-			<groupId>com.github.koraktor</groupId>
-			<artifactId>steam-condenser</artifactId>
-			<version>1.3.8</version>
-		</dependency>
+		</dependency>      
 	</dependencies>
 
 	<properties>
@@ -56,19 +51,43 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<version>1.1.10.RELEASE</version>
+				<version>1.2.1.RELEASE</version>
 			</plugin>
+			
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>appassembler-maven-plugin</artifactId>
-				<version>1.9</version>
+                <groupId>org.dstovall</groupId>
+                <artifactId>onejar-maven-plugin</artifactId>
+                <version>1.4.4</version>
+                <executions>
+                    <execution>
+                        <configuration>
+                            <!-- Optional -->
+                            <onejarVersion>0.97</onejarVersion>
+
+                            <!-- Optional, default is false -->
+                            <attachToBuild>true</attachToBuild>
+                            <!-- Optional, default is "onejar" -->
+                            <classifier>onejar</classifier>
+                        </configuration>
+                        <goals>
+                            <goal>one-jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+		
+			<plugin>
+				<!-- Build an executable JAR -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.5</version>
 				<configuration>
-					<programs>
-						<program>
-							<mainClass>com.steamrankings.website.main.Application</mainClass>
-							<id>app</id>
-						</program>
-					</programs>
+				<archive>
+				  <manifest>
+					<addClasspath>true</addClasspath>
+					<mainClass>com.steamrankings.website.Application</mainClass>
+				  </manifest>
+				</archive>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -91,7 +110,10 @@
 			<id>spring-milestone</id>
 			<url>https://repo.spring.io/libs-release</url>
 		</pluginRepository>
-
+		<pluginRepository>
+            <id>onejar-maven-plugin.googlecode.com</id>
+            <url>http://onejar-maven-plugin.googlecode.com/svn/mavenrepo</url>
+        </pluginRepository>
 	</pluginRepositories>
 
 
