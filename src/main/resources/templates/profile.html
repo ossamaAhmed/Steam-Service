@@ -1,11 +1,77 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Rank My Steam</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+  <link type="text/css" rel='stylesheet' href="../assets/css/lib/bootstrap.min.css" th:href="@{/assets/css/lib/bootstrap.min.css}" />
+
+  <link type="text/css" rel='stylesheet' href="../assets/css/lib/normalize.css" th:href="@{/assets/css/lib/normalize.css}" />
+
+  <link type="text/css" rel='stylesheet' href="../assets/css/profile.css" th:href="@{/assets/css/profile.css}" />
+
+  <title>Rank My Steam</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-    <p th:text="${message}" />
-    <p th:text="${url}" />
+     <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Rank My Steam</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="./index.html">Home</a></li>
+            <li><a href="./leaderboard.html">Leaderboard</a></li>
+            <li><a href="./profile">Profile</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="starter-template">
+        <img th:src="@{${full_avatar_url}}" />
+        <p th:text="${full_avatar_url}" />
+        <p th:text="${personal_name}" />        
+        <p th:text="${message}" />
+        <p th:text="${url}" />
+
+        <table id="games-table">
+          <thead>
+            <tr>
+              <th>Games Played</th>
+              <th>Logo</th>
+<!--               <th># of achievements</th>
+              <th>Average Completion Rate</th>
+              <th>Country</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="game : ${games}">
+              <th th:text="${game.name}">Pokemon</th>
+              <td><img th:src="@{${game.logoUrl}}" /></td>
+<!--               <td th:text="${game.achievementsTotal}">0</td>
+              <td th:text="${game.completionRate}">100</td>
+              <td th:text="${game.countryCode}">What Country</td> -->
+            </tr>
+          </tbody>
+        </table>        
+      </div>
+    </div><!-- /.container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+    <script src="../assets/js/lib/bootstrap.min.js" th:src="@{/assets/js/lib/bootstrap.min.js}"></script> 
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../assets/js/lib/ie10-viewport-bug-workaround.js" th:src="@{assets/js/lib/ie10-viewport-bug-workaround.js}"></script>
+<!--     // <script src="../assets/js/lib/jquery-throttle-debounce.min.js" th:src="@{/assets/js/lib/jquery-throttle-debounce.min.js}"></script>    
+    // <script src="../assets/js/lib/jquery.stickyheader.js" th:src="@{/assets/js/lib/jquery.stickyheader.js}"></script> -->
 </body>
 </html>
