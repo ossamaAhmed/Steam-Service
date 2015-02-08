@@ -1,5 +1,6 @@
 package com.steamrankings.website.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -14,7 +15,7 @@ public class LeaderboardController {
 
     @ModelAttribute("rankentries")
     public List<RankEntryByAchievements> populateTable() {
-        /*
+        
         RankEntryByAchievements r1 = new RankEntryByAchievements(1, 1234, "swag", 500, "50" , "Canada");
         RankEntryByAchievements r2 = new RankEntryByAchievements(2, 4321, "yolo", 501, "51", "USA");
         List<RankEntryByAchievements> curList = new ArrayList<RankEntryByAchievements>();
@@ -22,8 +23,8 @@ public class LeaderboardController {
         curList.add(r2);
 
         return curList;
-        */
-        return null;
+        
+//        return null;
     }
 
     @RequestMapping("/leaderboard")

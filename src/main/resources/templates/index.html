@@ -42,17 +42,12 @@
         <br /> Enter your name Steam ID here.
         </h1>
 
-        <div id="msg"></div>
-        <!-- some sort of form to take in data  - to do 
-        <form action="demo_form.asp">   </form> -->
-        <p class="lead">
-        <input type="text" name="SteamID" value="Your Steam ID Here" /><br />
-        <input type="submit" value="Submit" />
-        </p>
+        <form action="#" th:action="@{/}" th:object="${steamProfile}" method="post">
+        <input type="text" th:field="*{steamId64}" />
+        <button type="submit">Submit</button>
+        </form>
       </div>
-
     </div><!-- /.container -->
-
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
