@@ -35,39 +35,41 @@
 
     <div class="container">
       <div class="starter-template">
-        <img th:src="@{${full_avatar_url}}" />
+<!--         <img th:src="@{${full_avatar_url}}" />
         <p th:text="${full_avatar_url}" />
         <p th:text="${personal_name}" />        
         <p th:text="${message}" />
         <p th:text="${url}" />
-        
+ -->        
         <table class ="tg" align="center" id="User Data">
           <tr> 
-            <th class="tg-031e" rowspan="5"><img src="http://static.gamespot.com/uploads/original/1535/15354745/2446675-1517947464-22823.jpg" style="width:160px;height:160px"/> </th>
+            <th class="tg-031e" rowspan="5"><img th:src="@{${full_avatar_url}}" style="width:160px;height:160px"/> </th>
             <th class="tg-031e"></th>
           </tr>
           <tr>
-             <th>User ID: </th> 
-            <td th:text="${ID}">Temp</td>
+            <th>User ID: </th> 
+            <td th:text="${id}">Temp</td>
           </tr>
           <tr>
-             <th>Steam Username:</th>
-            <td th:text="${username}">Temp</td>
+            <th>Steam Real Name:</th>
+            <td th:text="${realname}">Temp</td>
+          </tr>
+          <tr>
+            <th>Personal Name:</th>
+            <td th:text="${persona_name}">Temp</td>
           </tr>
           <tr>
              <th>Country:</th>
-             <td th:text="${game.completionRate}">Temp</td>
+             <td th:text="${country}">Temp</td>
           </tr>
-          <tr>
+<!--           <tr>
              <th>Last Online:</th>
             <td td:text="${lastonline}">Temp</td>
-          </tr>
+          </tr> -->
         </table>  
         <br></br>
 
-        <div class="Achievements">     
-          <div class="starter-template">
-          
+        <div class="Achievements">               
           <table id="Achievement Table" align="center" width="500">
           <thead>
             <tr>
@@ -77,19 +79,16 @@
             </tr>
           </thead>
           <tbody>
-            <tr th:each="achievement : ${achievement}">
+            <tr th:each="rankentry : ${rankentries}">
               <td align="center" th:text="${rankentry.achievementsTotal}"><img src="http://static.gamespot.com/uploads/original/1535/15354745/2446675-1517947464-22823.jpg" style="width:30px;height:30px"/></td>
               <td align="center" th:text="${rankentry.completionRate}">Swag</td>
               <td align="center" th:text="${rankentry.countryCode}">Kill a spy with swag</td>
             </tr>
           </tbody>
           </table>
-        </div>
       </div>
       
-       <div class="Games Played">     
-          <div class="starter-template">
-          
+       <div class="Games Played">              
           <table id="Games" align="center" width="500">
           <thead>
             <tr>
@@ -106,14 +105,13 @@
             </tr>
           </tbody>
           </table>
-        </div>
       </div>
         
-<!--        <table align="center" id="Profile-table">
+       <table align="center" id="Profile-table">
           <thead>
             <tr>
                <th>User ID: </th> 
-               <p td:text="${ID}"/>
+               <p td:text="${id}"/>
             </tr>
             <tr>
                <th>Country:</th>
@@ -130,10 +128,10 @@
               <td><img th:src="@{${game.logoUrl}}" /></td>
          <td th:text="${game.achievementsTotal}">0</td>
               <td th:text="${game.completionRate}">100</td>
-              <td th:text="${game.countryCode}">What Country</td> -->
+              <td th:text="${game.countryCode}">What Country</td>
             </tr>
           </tbody>
-        </table>        
+        </table>     
       </div>
     </div><!-- /.container -->
     <!-- Bootstrap core JavaScript

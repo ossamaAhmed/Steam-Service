@@ -1,6 +1,5 @@
 package com.steamrankings.website.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.steamrankings.service.api.games.Games;
 import com.steamrankings.service.api.games.SteamGame;
-import com.steamrankings.service.api.leaderboards.RankEntryByAchievements;
 import com.steamrankings.service.api.profiles.Profiles;
 import com.steamrankings.service.api.profiles.SteamProfile;
 
@@ -29,38 +27,35 @@ public class ProfileController {
         // We add the error message to our model
         SteamProfile profile = Profiles.getSteamUser(id);
         model.addAttribute("full_avatar_url", profile.getFullAvatarUrl());
-        model.addAttribute("personal_name", profile.getPersonaName());
-        model.addAttribute("message", profile.getSteamCommunityId());
+        model.addAttribute("id", profile.getSteamId64());
+        model.addAttribute("persona_name", profile.getPersonaName());
+        model.addAttribute("realname", profile.getRealName());        
         model.addAttribute("url", profile.getSteamCommunityUrl());
+        model.addAttribute("country", profile.getCountryCode());
+//        model.addAttribute("lastonline", profile.getLastOnline().);
 
         return "profile";
     }
-
-//	@ModelAttribute("ID")
-//	public String getID(){
-//		SteamProfile profile = Profiles.getSteamUser(id);
-//	}
 	
-    @ModelAttribute("games")
-    public List<SteamGame> populateGames() {
-        SteamGame gameOne = new SteamGame(123, "icon", "http://logonoid.com/images/thumbs/cs-logo.png", "Counter Strike");
-        SteamGame gameTwo = new SteamGame(1234, "icon2", "logourl2", "Counter Strike Source");
-
-        List<SteamGame> curList = new ArrayList<SteamGame>();
-        curList.add(gameOne);
-        curList.add(gameTwo);
-
-        return curList;
-        
-//        return null;
-    }
-
 //    @ModelAttribute("games")
-//    public List<SteamGame> populateGames(String id) {     
-//        List<SteamGame> games = Games.getPlayedSteamGames(id);
+//    public List<SteamGame> populateGames() {
+//        SteamGame gameOne = new SteamGame(123, "icon", "http://logonoid.com/images/thumbs/cs-logo.png", "Counter Strike");
+//        SteamGame gameTwo = new SteamGame(1234, "icon2", "logourl2", "Counter Strike Source");
+//
+//        List<SteamGame> curList = new ArrayList<SteamGame>();
+//        curList.add(gameOne);
+//        curList.add(gameTwo);
+//
+//        return curList;
+//        
+//    }
+
+    @ModelAttribute("games")
+    public List<SteamGame> populateGames(String id) {     
+        List<SteamGame> games = Games.getPlayedSteamGames(id);
 //        if (games.isEmpty()) {
 //        	System.out.println("empty");
 //        }
-//        return games;
-//    }
+        return games;
+    }
 }
