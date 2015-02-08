@@ -14,6 +14,7 @@ import com.steamrankings.service.api.games.SteamGame;
 import com.steamrankings.service.api.profiles.Profiles;
 import com.steamrankings.service.api.profiles.SteamProfile;
 import com.steamrankings.website.Application;
+import com.steamrankings.service.api.APIException;
 
 // HTTP requests handled by the controller
 // You identify controllers in Spring by using the annotation @Controller
@@ -28,7 +29,16 @@ public class ProfileController {
     @RequestMapping("/profile")
     public String getProfile(String id, Model model) {
         // We add the error message to our model
-        SteamProfile profile = Profiles.getSteamUser(id);
+    	SteamProfile profile = null;
+    	try {
+    		profile = Profiles.getSteamUser(id);
+    	}
+        catch (Exception e) {
+        	if (e instanceof APIException) {
+        		return "error?=" + e.getMessage();
+        	}
+        }
+    	
         if (profile == null) {
             return "index";
         }
@@ -44,7 +54,17 @@ public class ProfileController {
             model.addAttribute("country", "");
             model.addAttribute("country_flag", "/assets/images/country_flags/_United Nations.png");
         }
-        List<SteamGame> games = Games.getPlayedSteamGames(id);
+        List<SteamGame> games = null;
+		try {
+			games = Games.getPlayedSteamGames(id);
+		} catch (Exception e) {
+			if (e instanceof APIException) {
+        		return "error?=" + e.getMessage();
+        	}
+        }
+		if (games == null) {
+			return "index";
+		}
         model.addAttribute("games", games);
 
         List<GameAchievement> achievements = Achievements.getUnlockedAchievements(id);
