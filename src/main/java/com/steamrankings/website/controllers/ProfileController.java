@@ -24,18 +24,22 @@ public class ProfileController {
 
     // This annotation sets that the HTTP requests of /profile are handled by
     // the getProfile method
-    @RequestMapping("/profile")
-    public String getProfile(String id, Model model) {
-        // We add the error message to our model
-        SteamProfile profile = Profiles.getSteamUser(id);
-        model.addAttribute("full_avatar_url", profile.getFullAvatarUrl());
-        model.addAttribute("personal_name", profile.getPersonaName());
-        model.addAttribute("message", profile.getSteamCommunityId());
-        model.addAttribute("url", profile.getSteamCommunityUrl());
-
-        return "profile";
-    }
-
+//    @RequestMapping("/profile")
+//    public String getProfile(String id, Model model) {
+//        // We add the error message to our model
+//        SteamProfile profile = Profiles.getSteamUser(id);
+//        model.addAttribute("full_avatar_url", profile.getFullAvatarUrl());
+//        model.addAttribute("personal_name", profile.getPersonaName());
+//        model.addAttribute("message", profile.getSteamCommunityId());
+//        model.addAttribute("url", profile.getSteamCommunityUrl());
+//
+//        return "profile";
+//    }
+	@ModelAttribute("ID")
+	public String getID(){
+		SteamProfile profile = Profiles.getSteamUser(id);
+	}
+	
     @ModelAttribute("games")
     public List<SteamGame> populateGames() {
         SteamGame gameOne = new SteamGame(123, "icon", "http://logonoid.com/images/thumbs/cs-logo.png", "Counter Strike");
