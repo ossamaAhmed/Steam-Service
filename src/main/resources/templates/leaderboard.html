@@ -52,7 +52,7 @@
           <tbody>
             <tr th:each="rankentry : ${rankentries}">
               <th th:text="${rankentry.rankNumber}">0</th>
-              <td th:text="${rankentry.name}">SteamTroller</td>
+              <td><a th:text="${rankentry.name}" th:href="@{'/profile?id=' + ${rankentry.id64}}" href=""></a></td>
               <td th:text="${rankentry.achievementsTotal}">0</td>
               <td th:text="${rankentry.completionRate}">100</td>
               <td><img th:src="@{${rankentry.countryCode}}" /></td>
