@@ -29,6 +29,9 @@ public class ProfileController {
     public String getProfile(String id, Model model) {
         // We add the error message to our model
         SteamProfile profile = Profiles.getSteamUser(id);
+        if (profile == null) {
+            return "index";
+        }
         model.addAttribute("full_avatar_url", profile.getFullAvatarUrl());
         model.addAttribute("personal_name", profile.getPersonaName());
         model.addAttribute("url", profile.getSteamCommunityUrl());
