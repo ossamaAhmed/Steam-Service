@@ -39,17 +39,17 @@
     </div>
 	
 	<h1>Top 15 Most Played Games</h1>
-	<table>
+	<table id="leaderboard-table">
 		<tbody>
 		  <tr th:each="game : ${games}">
-			<td th:text="${game.name}"></td>
-			<td><img th:src="@{${game.logoUrl}}" /></td>
+      <td><img th:src="@{${game.logoUrl}}" /></td>        
+			<td th:text="${game.name}" />
 		  </tr>
 		</tbody>
 	  </table>
 	  
-	 <h1>15 Random Achievements</h1>
-	<table>
+	<h1>15 Random Achievements</h1>
+	<table id="leaderboard-table">
 		<tbody>
 		  <tr th:each="achievement : ${achievements}">
 			<td><img th:src="@{${achievement.unlockedIconUrl}}" /></td>
