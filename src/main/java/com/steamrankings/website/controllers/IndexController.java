@@ -1,6 +1,7 @@
 package com.steamrankings.website.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,7 +21,10 @@ public class IndexController extends WebMvcConfigurerAdapter {
     // }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String showIndex(SteamProfile profile) {
+    public String showIndex(SteamProfile profile, String error, Model model) {
+    	if (error != null) {
+    		model.addAttribute("error", error);
+    	}
         return "index";
     }
 
@@ -31,11 +35,12 @@ public class IndexController extends WebMvcConfigurerAdapter {
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public String checkPersonInfo(SteamProfile steamProfile, BindingResult bindingResult) {
-        // SteamProfile profile = Profiles.getSteamUser(steamProfile);
-        // if (bindingResult.hasErrors()) {
-        // return "index";
-        // }
-        return "redirect:/profile?id=" + steamProfile.getSteamId64();
+//       com.steamrankings.service.api.profiles.SteamProfile profile = Profiles.getSteamUser("" + steamProfile);
+       if (bindingResult.hasErrors()) {
+           return "index";
+       }
+       
+       return "redirect:/profile?id=" + steamProfile.getSteamId64();
     }
 
 }

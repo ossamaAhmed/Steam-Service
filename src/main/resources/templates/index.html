@@ -43,6 +43,8 @@
         <form action="#" th:action="@{/}" th:object="${steamProfile}" method="post">
         <input type="text" th:field="*{steamId64}" />
         <button type="submit">Submit</button>
+
+        <p th:text="${error}" />
         </form>
       </div>
     </div><!-- /.container -->

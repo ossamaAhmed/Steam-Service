@@ -2,6 +2,7 @@ package com.steamrankings.website.controllers;
 
 import java.util.List;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,7 +28,7 @@ public class ProfileController {
     // This annotation sets that the HTTP requests of /profile are handled by
     // the getProfile method
     @RequestMapping("/profile")
-    public String getProfile(String id, Model model) {
+    public String getProfile(String id, Model model) throws JSONException {
         // We add the error message to our model
     	SteamProfile profile = null;
     	try {
@@ -42,6 +43,7 @@ public class ProfileController {
         if (profile == null) {
             return "index";
         }
+
         model.addAttribute("full_avatar_url", profile.getFullAvatarUrl());
         model.addAttribute("personal_name", profile.getPersonaName());
         model.addAttribute("url", profile.getSteamCommunityUrl());
