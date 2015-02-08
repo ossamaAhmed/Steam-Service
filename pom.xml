@@ -68,7 +68,7 @@
 	<repositories>
 		<repository> 
 		<id>com.steamrankings</id> 
-		<url>http://mikemontreal.ignorelist.com:58722/plugin/repository/project/SteamRankingsService/LastSuccessful/repository/</url> 
+		<url>http://mikemontreal.ignorelist.com:58722/job/SteamRankingsService/57/maven-repository/repository/</url> 
 		</repository>
 
 		<repository>
