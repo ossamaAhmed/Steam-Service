@@ -13,6 +13,12 @@
 			<groupId>com.steamrankings</groupId>
 			<artifactId>SteamRankingsService</artifactId>
 			<version>1.0-SNAPSHOT</version>
+			<exclusions>
+			  <exclusion> 
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-simple</artifactId>
+			  </exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -68,7 +74,7 @@
 	<repositories>
 		<repository> 
 		<id>com.steamrankings</id> 
-		<url>http://mikemontreal.ignorelist.com:58722/job/SteamRankingsService/57/maven-repository/repository/</url> 
+		<url>http://mikemontreal.ignorelist.com:58722/plugin/repository/project/SteamRankingsService/LastSuccessful/repository/</url> 
 		</repository>
 
 		<repository>
