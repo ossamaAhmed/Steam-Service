@@ -57,7 +57,7 @@
               <td th:text="${rankentry.name}">SteamTroller</td>
               <td th:text="${rankentry.achievementsTotal}">0</td>
               <td th:text="${rankentry.completionRate}">100</td>
-              <td th:text="${rankentry.countryCode}">What Country</td>
+              <td><img th:src="@{${rankentry.countryCode}}" /></td>
             </tr>
           </tbody>
         </table>

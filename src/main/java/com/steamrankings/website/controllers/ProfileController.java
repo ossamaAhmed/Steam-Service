@@ -2,6 +2,7 @@ package com.steamrankings.website.controllers;
 
 import java.util.List;
 
+import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import com.steamrankings.service.api.games.Games;
 import com.steamrankings.service.api.games.SteamGame;
 import com.steamrankings.service.api.profiles.Profiles;
 import com.steamrankings.service.api.profiles.SteamProfile;
+import com.steamrankings.website.Application;
 
 // HTTP requests handled by the controller
 // You identify controllers in Spring by using the annotation @Controller
@@ -30,7 +32,15 @@ public class ProfileController {
         model.addAttribute("full_avatar_url", profile.getFullAvatarUrl());
         model.addAttribute("personal_name", profile.getPersonaName());
         model.addAttribute("url", profile.getSteamCommunityUrl());
-
+        if (profile.getCountryCode() != null && Application.steam_countries.has(profile.getCountryCode())) {
+            JSONObject countryData = Application.steam_countries.getJSONObject(profile.getCountryCode());
+            model.addAttribute("country", countryData.getString("name"));
+            System.out.println(profile.getCountryCode().toLowerCase() + ".png");
+            model.addAttribute("country_flag", "/assets/images/country_flags/" + profile.getCountryCode().toLowerCase() + ".png");
+        } else {
+            model.addAttribute("country", "");
+            model.addAttribute("country_flag", "/assets/images/country_flags/_United Nations.png");
+        }
         List<SteamGame> games = Games.getPlayedSteamGames(id);
         model.addAttribute("games", games);
 
