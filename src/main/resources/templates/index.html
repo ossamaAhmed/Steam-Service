@@ -41,7 +41,7 @@
         </h1>
 
         <form action="#" th:action="@{/}" th:object="${steamProfile}" method="post">
-        <input type="text" th:field="*{steamId64}" />
+        <input type="text" th:field="*{userQuery}" />
         <button type="submit">Submit</button>
 
         <p th:text="${error}" />
