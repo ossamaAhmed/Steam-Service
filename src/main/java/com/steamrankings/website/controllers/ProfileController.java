@@ -29,7 +29,7 @@ public class ProfileController {
     	}
         catch (Exception e) {
         	if (e instanceof APIException) {
-        		return "error?=" + e.getMessage();
+        		return "redirect:/?error=" + e.getMessage();
         	}
         }
     	
