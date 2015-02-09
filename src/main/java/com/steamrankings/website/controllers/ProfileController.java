@@ -54,7 +54,7 @@ public class ProfileController {
 			games = Games.getPlayedSteamGames(id);
 		} catch (Exception e) {
 			if (e instanceof APIException) {
-        		return "error?=" + e.getMessage();
+        		return "/?error=" + e.getMessage();
         	}
         }
 		if (games == null) {
