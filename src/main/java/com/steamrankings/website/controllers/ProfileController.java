@@ -17,16 +17,9 @@ import com.steamrankings.service.api.profiles.SteamProfile;
 import com.steamrankings.website.Application;
 import com.steamrankings.service.api.APIException;
 
-// HTTP requests handled by the controller
-// You identify controllers in Spring by using the annotation @Controller
 @Controller
 public class ProfileController {
 
-    // Good Spring MVC tutorial at
-    // https://spring.io/guides/gs/serving-web-content/
-
-    // This annotation sets that the HTTP requests of /profile are handled by
-    // the getProfile method
     @RequestMapping("/profile")
     public String getProfile(String id, Model model) throws JSONException {
         // We add the error message to our model
@@ -36,7 +29,7 @@ public class ProfileController {
     	}
         catch (Exception e) {
         	if (e instanceof APIException) {
-        		return "error?=" + e.getMessage();
+        		return "/?error=" + e.getMessage();
         	}
         }
     	
@@ -61,7 +54,7 @@ public class ProfileController {
 			games = Games.getPlayedSteamGames(id);
 		} catch (Exception e) {
 			if (e instanceof APIException) {
-        		return "error?=" + e.getMessage();
+        		return "/?error=" + e.getMessage();
         	}
         }
 		if (games == null) {
