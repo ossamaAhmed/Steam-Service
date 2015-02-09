@@ -9,16 +9,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 import com.steamrankings.website.model.SteamProfile;
 
-//import com.steamrankings.service.api.profiles.SteamProfile;
-
 @Controller
 public class IndexController extends WebMvcConfigurerAdapter {
-    // @RequestMapping(value = "/", method = RequestMethod.GET)
-    // public ModelAndView index(SteamProfile profile) {
-    // ModelAndView model = new ModelAndView("index");
-    // return model;
-    //
-    // }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String showIndex(SteamProfile profile, String error, Model model) {
@@ -35,7 +27,6 @@ public class IndexController extends WebMvcConfigurerAdapter {
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public String checkPersonInfo(SteamProfile steamProfile, BindingResult bindingResult) {
-//       com.steamrankings.service.api.profiles.SteamProfile profile = Profiles.getSteamUser("" + steamProfile);
        if (bindingResult.hasErrors()) {
            return "index";
        }

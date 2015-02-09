@@ -16,15 +16,4 @@ public class SteamProfile {
     public void setSteamId64(String query) {
         this.id64 = SteamDataDatabase.convertToSteamId64(query);
     }
-
-//    public void setSteamId64(String query) {
-//        this.id64 = query;
-//    }
-//    private String detectIdOrName(String query) {
-//    	if (SteamDataDatabase.convertToSteamId64(id64) == -1) {
-//    		return query;
-//    	} else {
-//    		return id
-//    	}
-//    }
 }
