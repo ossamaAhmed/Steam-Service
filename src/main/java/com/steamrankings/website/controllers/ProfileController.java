@@ -25,10 +25,14 @@ public class ProfileController {
         // We add the error message to our model
     	SteamProfile profile = null;
     	try {
+    		System.out.println(id);
     		profile = Profiles.getSteamUser(id);
     	}
         catch (Exception e) {
         	if (e instanceof APIException) {
+        		return "redirect:/?error=" + e.getMessage();
+        	}
+        	if (e instanceof IllegalArgumentException) {
         		return "redirect:/?error=" + e.getMessage();
         	}
         }
