@@ -4,15 +4,47 @@
 	<groupId>com.steamrankings</groupId>
 	<artifactId>SteamRankingsWebsite</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.1-SNAPSHOT</version>
 	<name>SteamRankingsWebsite</name>
 	<url>http://maven.apache.org</url>
 
 	<dependencies>
+		
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+			<version>1.2.1.RELEASE</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-compress</artifactId>
+			<version>1.9</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.3.2</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.4</version>
+		</dependency>
+
 		<dependency>
 			<groupId>com.steamrankings</groupId>
-			<artifactId>SteamRankingsService</artifactId>
-			<version>1.0-SNAPSHOT</version>
+			<artifactId>api</artifactId>
+			<version>1.1-SNAPSHOT</version>
 			<exclusions>
 			  <exclusion> 
 				<groupId>org.slf4j</groupId>
@@ -20,32 +52,7 @@
 			  </exclusion>
 			</exclusions>
 		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-			<version>1.1.10.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-compress</artifactId>
-			<version>1.5</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-			<version>3.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpclient</artifactId>
-			<version>4.2.5</version>
-		</dependency>      
+		
 	</dependencies>
 
 	<properties>
@@ -66,21 +73,29 @@
                 </execution>
             </executions>
         </plugin>
-			
-
 		</plugins>
+		
 	</build>
 
 	<repositories>
-		<repository> 
-		<id>com.steamrankings</id> 
-		<url>http://mikemontreal.ignorelist.com:58722/plugin/repository/project/SteamRankingsService/LastSuccessful/repository/</url> 
-		</repository>
-
 		<repository>
 			<id>spring-milestone</id>
 			<url>https://repo.spring.io/libs-release</url>
 		</repository>
+		
+		<repository> 
+		<id>com.steamrankings</id> 
+		<url>http://mikemontreal.ignorelist.com:58722/plugin/repository/project/SteamRankingsService/LastSuccessful/repository/</url>
+		<snapshots>
+			<enabled>true</enabled>
+			<updatePolicy>always</updatePolicy>
+		</snapshots>
+		<releases>
+			<enabled>true</enabled>
+			<updatePolicy>always</updatePolicy>
+		</releases>
+		</repository>
+		
 	</repositories>
 
 	<pluginRepositories>
@@ -89,6 +104,6 @@
 			<url>https://repo.spring.io/libs-release</url>
 		</pluginRepository>
 	</pluginRepositories>
-
+	
 
 </project>

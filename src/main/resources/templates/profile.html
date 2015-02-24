@@ -36,8 +36,6 @@
         <img th:src="@{${full_avatar_url}}" />
         <p th:text="${personal_name}" />
         <p th:text="${country}" /><img th:src="@{${country_flag}}" />
-      </div>
-    </div>
 	
 	<h1>Top 30 Most Played Games</h1>
 	<table id="leaderboard-table">
@@ -45,6 +43,7 @@
 		  <tr th:each="game : ${games}">
       <td><img th:src="@{${game.logoUrl}}" /></td>        
 			<td th:text="${game.name}" />
+      <td th:text="${game.appId}" />      
 		  </tr>
 		</tbody>
 	  </table>
@@ -59,6 +58,8 @@
 		  </tr>
 		</tbody>
 	  </table>
+      </div>
+    </div>
 	<!-- /.container -->
     <!-- Bootstrap core JavaScript
     ================================================== -->
