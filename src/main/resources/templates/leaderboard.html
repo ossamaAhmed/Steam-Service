@@ -44,8 +44,9 @@
             <tr>
               <th>Rank</th>
               <th>Name</th>
-              <th># of achievements</th>
+              <th><a th:href="@{'/leaderboard'}"># of achievements</a></th>
               <th>Average Completion Rate</th>
+              <th><a th:href="@{'/leaderboard?type=playtime'}">Total Play Time</a></th>
               <th>Country</th>
             </tr>
           </thead>
@@ -55,6 +56,7 @@
               <td><a th:text="${rankentry.name}" th:href="@{'/profile?id=' + ${rankentry.id64}}" href=""></a></td>
               <td th:text="${rankentry.achievementsTotal}">0</td>
               <td th:text="${rankentry.completionRate}">100</td>
+              <td th:text="${rankentry.totalPlayTime}">100</td>
               <td><img th:src="@{${rankentry.countryCode}}" /></td>
             </tr>
           </tbody>
