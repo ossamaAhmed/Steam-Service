@@ -18,8 +18,8 @@ public class LeaderboardController {
     @ModelAttribute("rankentries")
     public List<RankEntryByAchievements> populateTable() {
         RankEntryByAchievements r1 = new RankEntryByAchievements(1, 1234, "swag",
-        500, "50", "Canada"); RankEntryByAchievements r2 = new
-        RankEntryByAchievements(2, 4321, "yolo", 501, "51", "USA");
+        500, "50", 50, "Canada"); RankEntryByAchievements r2 = new
+        RankEntryByAchievements(2, 4321, "yolo", 501, "51", 100, "USA");
         List<RankEntryByAchievements> curList = new
         ArrayList<RankEntryByAchievements>(); curList.add(r1); curList.add(r2);
 
@@ -32,12 +32,60 @@ public class LeaderboardController {
     	if (type == null || type.equals("achievements")) {
             System.out.println(type);
     		byAchievements(model);
-    		
+
             return "leaderboard";
+    	} else if (type.equals("playtime")) {
+    		byPlayTime(model);
+    		return "leaderboard";
+    	}else if (type.equals("completionrate")) {
+    		byCompletionRate(model);
+    		return "leaderboard";
     	} else {
-    		// model.addAttribute("");
             return "redirect:/?error=" + "this is a bad link";    		
     	}
+    }
+    
+	private void byCompletionRate(Model model) {
+//    	List<RankEntryByAchievements> rankEntries = null;
+    	List<RankEntryByAchievements> rankEntries = Leaderboards.getRanksByCompletionRate(1, 10);
+        if (rankEntries != null) {
+            for (int i = 0; i < rankEntries.size(); i++) {
+                if (rankEntries.get(i).getCountryCode() != null && !rankEntries.get(i).getCountryCode().equals("")) {
+                    String countryFlag = "/assets/images/country_flags/" + rankEntries.get(i).getCountryCode().toLowerCase() + ".png";
+                    rankEntries.set(i, new RankEntryByAchievements(rankEntries.get(i).getRankNumber(), rankEntries.get(i).getId64(), rankEntries.get(i).getName(), rankEntries.get(i)
+                            .getAchievementsTotal(), rankEntries.get(i).getCompletionRate(), rankEntries.get(i).getTotalPlayTime() ,  countryFlag));
+                } else {
+                    String countryFlag = "/assets/images/country_flags/_United Nations.png";
+                    rankEntries.set(i, new RankEntryByAchievements(rankEntries.get(i).getRankNumber(), rankEntries.get(i).getId64(), rankEntries.get(i).getName(), rankEntries.get(i)
+                            .getAchievementsTotal(), rankEntries.get(i).getCompletionRate(), rankEntries.get(i).getTotalPlayTime(), countryFlag));
+                }
+            }
+            model.addAttribute("rankentries", rankEntries);
+        } else {
+        	populateTable();
+        }
+    }
+
+
+	private void byPlayTime(Model model) {
+    	List<RankEntryByAchievements> rankEntries = Leaderboards.getRanksByTotalPlayTime(1, 10);
+ 
+        if (rankEntries != null) {
+            for (int i = 0; i < rankEntries.size(); i++) {
+                if (rankEntries.get(i).getCountryCode() != null && !rankEntries.get(i).getCountryCode().equals("")) {
+                    String countryFlag = "/assets/images/country_flags/" + rankEntries.get(i).getCountryCode().toLowerCase() + ".png";
+                    rankEntries.set(i, new RankEntryByAchievements(rankEntries.get(i).getRankNumber(), rankEntries.get(i).getId64(), rankEntries.get(i).getName(), rankEntries.get(i)
+                            .getAchievementsTotal(), rankEntries.get(i).getCompletionRate(), rankEntries.get(i).getTotalPlayTime() ,  countryFlag));
+                } else {
+                    String countryFlag = "/assets/images/country_flags/_United Nations.png";
+                    rankEntries.set(i, new RankEntryByAchievements(rankEntries.get(i).getRankNumber(), rankEntries.get(i).getId64(), rankEntries.get(i).getName(), rankEntries.get(i)
+                            .getAchievementsTotal(), rankEntries.get(i).getCompletionRate(), rankEntries.get(i).getTotalPlayTime(), countryFlag));
+                }
+            }
+            model.addAttribute("rankentries", rankEntries);
+        } else {
+        	populateTable();
+        } 
     }
     
     private void byAchievements(Model model) {
@@ -48,11 +96,11 @@ public class LeaderboardController {
                 if (rankEntries.get(i).getCountryCode() != null && !rankEntries.get(i).getCountryCode().equals("")) {
                     String countryFlag = "/assets/images/country_flags/" + rankEntries.get(i).getCountryCode().toLowerCase() + ".png";
                     rankEntries.set(i, new RankEntryByAchievements(rankEntries.get(i).getRankNumber(), rankEntries.get(i).getId64(), rankEntries.get(i).getName(), rankEntries.get(i)
-                            .getAchievementsTotal(), rankEntries.get(i).getCompletionRate(), countryFlag));
+                            .getAchievementsTotal(), rankEntries.get(i).getCompletionRate(), rankEntries.get(i).getTotalPlayTime(), countryFlag));
                 } else {
                     String countryFlag = "/assets/images/country_flags/_United Nations.png";
                     rankEntries.set(i, new RankEntryByAchievements(rankEntries.get(i).getRankNumber(), rankEntries.get(i).getId64(), rankEntries.get(i).getName(), rankEntries.get(i)
-                            .getAchievementsTotal(), rankEntries.get(i).getCompletionRate(), countryFlag));
+                            .getAchievementsTotal(), rankEntries.get(i).getCompletionRate(), rankEntries.get(i).getTotalPlayTime(), countryFlag));
                 }
             }
             model.addAttribute("rankentries", rankEntries);
