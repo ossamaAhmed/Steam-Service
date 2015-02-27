@@ -33,9 +33,24 @@
     </nav>
     <div class="container">
       <div class="starter-template">
-        <p> hello </p>
-      <!-- <img th:src="@{${logoUrl}}" /> -->
-        <p th:text="${name}" />
+        <img th:src="@{${game_logo_Url}}" />
+        <p th:text="${game_name}" />
+        <p th:text="${total_players}" />
+        <p th:text="${hours_played}" />
+        <p th:text="${avg_completion_rate}" />
+	
+	<h1>Top Players</h1>
+	<table id="players-table">
+		<tbody>
+		  <tr th:each="playerentry : ${playerentries}">
+              <td><a th:text="${playerentry.name}" th:href="@{'/profile?id=' + ${playerentry.id64}}" href=""></a></td>
+              <td th:text="${playerentry.achievementsTotal}">0</td>
+              <td th:text="${playerentry.completionRate}">100</td>
+              <td><img th:src="@{${playerentry.countryCode}}" /></td>    
+		  </tr>
+		</tbody>
+	  </table>
+	  
       </div>
     </div>
   <!-- /.container -->
