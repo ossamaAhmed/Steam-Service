@@ -7,34 +7,34 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+import com.steamrankings.service.api.profiles.Profiles;
 import com.steamrankings.website.model.SteamProfile;
 
 @Controller
-public class IndexController extends WebMvcConfigurerAdapter {
-
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String showIndex(SteamProfile profile, String error, Model model) {
-		if (error != null) {
-			model.addAttribute("error", error);
+public class BlackListController extends WebMvcConfigurerAdapter {
+	
+	@RequestMapping(value = "/blacklist", method = RequestMethod.GET)
+	public String showIndex(SteamProfile profile, String id, Model model) {
+		if (id != null) {
+			//model.addAttribute("error", id);
+			return "redirect:/leaderboard";
+			
 		}
 		
-		return "index";
+		return "blacklist";
 	}
 
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public String redirect(SteamProfile profile) {
-		return "redirect:/";
-	}
 
-	@RequestMapping(value = "/", method = RequestMethod.POST)
-	public String checkPersonInfo(SteamProfile steamProfile,
+	@RequestMapping(value = "/blacklist", method = RequestMethod.POST)
+	public String addBlackList(SteamProfile steamProfile,
 			BindingResult bindingResult) {
 
 		if (bindingResult.hasErrors()) {
-			return "index";
+			return "blacklist";
 		}
-		
-		return "redirect:/profile?id="
+		Profiles.addBlackList(handleQuery(steamProfile.getUserQuery()));
+		System.out.println("Switching to leaderboard");
+		return "redirect:/blacklist?id="
 				+ handleQuery(steamProfile.getUserQuery());
 	}
 
@@ -48,4 +48,5 @@ public class IndexController extends WebMvcConfigurerAdapter {
 		}
 		return query;
 	}
+
 }
