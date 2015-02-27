@@ -1,15 +1,19 @@
 package com.steamrankings.website.controllers;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.http.client.ClientProtocolException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.steamrankings.service.api.APIException;
 import com.steamrankings.service.api.leaderboards.Leaderboards;
 import com.steamrankings.service.api.leaderboards.RankEntryByAchievements;
+import com.steamrankings.website.Application;
 
 @Controller
 public class LeaderboardController {
@@ -31,23 +35,56 @@ public class LeaderboardController {
     public String getLeaderboard(String type, Model model) {
     	if (type == null || type.equals("achievements")) {
             System.out.println(type);
-    		byAchievements(model);
+    		try {
+                byAchievements(model);
+            } catch (ClientProtocolException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (APIException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
 
             return "leaderboard";
     	} else if (type.equals("playtime")) {
-    		byPlayTime(model);
+    		try {
+                byPlayTime(model);
+            } catch (ClientProtocolException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (APIException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
     		return "leaderboard";
     	}else if (type.equals("completionrate")) {
-    		byCompletionRate(model);
+    		try {
+                byCompletionRate(model);
+            } catch (ClientProtocolException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (APIException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
     		return "leaderboard";
     	} else {
             return "redirect:/?error=" + "this is a bad link";    		
     	}
     }
     
-	private void byCompletionRate(Model model) {
-//    	List<RankEntryByAchievements> rankEntries = null;
-    	List<RankEntryByAchievements> rankEntries = Leaderboards.getRanksByCompletionRate(1, 10);
+	private void byCompletionRate(Model model) throws ClientProtocolException, APIException, IOException {
+	    List<RankEntryByAchievements> rankEntries = Leaderboards.getRanksByCompletionRate(1, 10, Application.client);
+
         if (rankEntries != null) {
             for (int i = 0; i < rankEntries.size(); i++) {
                 if (rankEntries.get(i).getCountryCode() != null && !rankEntries.get(i).getCountryCode().equals("")) {
@@ -61,14 +98,12 @@ public class LeaderboardController {
                 }
             }
             model.addAttribute("rankentries", rankEntries);
-        } else {
-        	populateTable();
         }
     }
 
 
-	private void byPlayTime(Model model) {
-    	List<RankEntryByAchievements> rankEntries = Leaderboards.getRanksByTotalPlayTime(1, 10);
+	private void byPlayTime(Model model) throws ClientProtocolException, APIException, IOException {
+    	List<RankEntryByAchievements> rankEntries = Leaderboards.getRanksByTotalPlayTime(1, 10, Application.client);
  
         if (rankEntries != null) {
             for (int i = 0; i < rankEntries.size(); i++) {
@@ -83,13 +118,11 @@ public class LeaderboardController {
                 }
             }
             model.addAttribute("rankentries", rankEntries);
-        } else {
-        	populateTable();
-        } 
+        }
     }
     
-    private void byAchievements(Model model) {
-        List<RankEntryByAchievements> rankEntries = Leaderboards.getRanksByAchievementTotal(1, 10);
+    private void byAchievements(Model model) throws ClientProtocolException, APIException, IOException {
+        List<RankEntryByAchievements> rankEntries = Leaderboards.getRanksByAchievementTotal(1, 10, Application.client);
 
         if (rankEntries != null) {
             for (int i = 0; i < rankEntries.size(); i++) {
@@ -104,8 +137,6 @@ public class LeaderboardController {
                 }
             }
             model.addAttribute("rankentries", rankEntries);
-        } else {
-        	populateTable();
-        }    	
+        }   	
     }
 }
