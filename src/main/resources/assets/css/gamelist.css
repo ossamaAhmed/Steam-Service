@@ -39,7 +39,7 @@ tbody tr:nth-child(2n-1) {
     transition: all .125s ease-in-out;
 }
 tbody tr:hover {
-    background-color: rgba(208,53,53,.3);
+    background-color: rgba(208,53,53,.25);
 }
 
 
