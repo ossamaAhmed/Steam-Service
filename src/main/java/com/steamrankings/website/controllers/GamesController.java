@@ -16,12 +16,24 @@ public class GamesController {
 		for(int i = 0; i < rankEntries.size(); i++) {
 			if(rankEntries.get(i).getCountryCode() != null && !rankEntries.get(i).getCountryCode().equals("")) {
 				  String countryFlag = "/assets/images/country_flags/" + rankEntries.get(i).getCountryCode().toLowerCase() + ".png";
-				  rankEntries.set(i, new RankEntryByTotalPlayTime(rankEntries.get(i).getRankNumber(), rankEntries.get(i).getId64(),
-						  rankEntries.get(i).getName(),rankEntries.get(i).getTotalPlayTime(), countryFlag));
+				  rankEntries.set(i, new RankEntryByTotalPlayTime(
+						  rankEntries.get(i).getRankNumber(),
+						  rankEntries.get(i).getId64(),
+						  rankEntries.get(i).getName(),
+						  rankEntries.get(i).getAchievementsTotal(),
+						  rankEntries.get(i).getTotalPlayTime(),
+						  rankEntries.get(i).getCompletionRate(), 
+						  countryFlag));
 			} else {
                 String countryFlag = "/assets/images/country_flags/_United Nations.png";
-                rankEntries.set(i, new RankEntryByTotalPlayTime(rankEntries.get(i).getRankNumber(), rankEntries.get(i).getId64(),
-						  rankEntries.get(i).getName(),rankEntries.get(i).getTotalPlayTime(), countryFlag));
+                rankEntries.set(i, new RankEntryByTotalPlayTime(
+						  rankEntries.get(i).getRankNumber(),
+						  rankEntries.get(i).getId64(),
+						  rankEntries.get(i).getName(),
+						  rankEntries.get(i).getAchievementsTotal(),
+						  rankEntries.get(i).getTotalPlayTime(),
+						  rankEntries.get(i).getCompletionRate(), 
+						  countryFlag));
 			}
 		}
 		model.addAttribute("rankEntries", rankEntries);
