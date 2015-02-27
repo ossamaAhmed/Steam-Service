@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-  <link type="text/css" rel="stylesheet" href="../assets/css/main.css" th:href="@{/assets/css/main.css}" />
+  <link type="text/css" rel="stylesheet" href="../assets/countries/countries.css" th:href="@{/assets/css/countries.css}" />
 
   <link type="text/css" rel='stylesheet' href="../assets/css/lib/bootstrap.min.css" th:href="@{/assets/css/lib/bootstrap.min.css}" />
 
@@ -37,16 +37,18 @@
     <div class="container">
 
       <div class="starter-template">
-        <h1>Want to add your name to Rank My Steam?
-        <br /> Enter your name Steam ID here.
-        </h1>
+        <h1>List of countries that are on Rank My Steam</h1>
 
-        <form action="#" th:action="@{/}" th:object="${steamProfile}" method="post">
-        <input type="text" th:field="*{userQuery}" />
-        <button type="submit">Submit</button>
-
-        <p th:text="${error}" />
-        </form>
+        <p th:text="${countries}"></p>
+<!--         <table id="country-table">
+          <tbody>
+            <tr th:each="country : ${countries}">
+            <td><img th:src="@{${country.countryCode}}" /></td>        
+            <td th:text="${country.name}" />
+            <td th:text="${country.playersCount}" />      
+            </tr>
+          </tbody>
+        </table> -->
       </div>
     </div><!-- /.container -->
 
