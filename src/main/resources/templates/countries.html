@@ -37,18 +37,14 @@
     <div class="container">
 
       <div class="starter-template">
-        <h1>List of countries that are on Rank My Steam</h1>
-
-        <p th:text="${countries}"></p>
-<!--         <table id="country-table">
-          <tbody>
-            <tr th:each="country : ${countries}">
-            <td><img th:src="@{${country.countryCode}}" /></td>        
-            <td th:text="${country.name}" />
-            <td th:text="${country.playersCount}" />      
-            </tr>
-          </tbody>
-        </table> -->
+            <table id="country-table">
+                <tbody>
+                    <tr th:each="country : ${countries}">
+                        <td><img th:src="@{'/assets/images/country_flags/' + ${country.code}} + '.png'" /></td>        
+                        <td th:text="${country.name}" />
+                    </tr>
+                </tbody>
+            </table> -->
       </div>
     </div><!-- /.container -->
 
