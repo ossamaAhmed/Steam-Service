@@ -14,12 +14,32 @@ public class IndexController extends WebMvcConfigurerAdapter {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String showIndex(SteamProfile profile, String error, Model model) {
-		if (error != null) {
-			model.addAttribute("error", error);
+		if(error !=null)
+		{
+			if (error.equals("3000")) {
+				model.addAttribute("error", "Steam ID entered Invalid");
+			}
+			else if(error.equals("4000"))
+			{
+				model.addAttribute("error", "Steam ID is in the blacklist, please contact an admin");
+			}
+			else if(error.equals("2000"))
+			{
+				model.addAttribute("error", "Steam ID does not exist");
+			}
+			else if(error.equals("1000"))
+			{
+				model.addAttribute("error", "Bad Argument entered");
+			}
+			else 
+			{
+				model.addAttribute("error", error);
+			}
 		}
 		
 		return "index";
 	}
+
 
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String redirect(SteamProfile profile) {

@@ -5,20 +5,23 @@ import java.util.List;
 
 import org.apache.http.client.ClientProtocolException;
 import org.springframework.ui.Model;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.steamrankings.service.api.APIException;
-import com.steamrankings.service.api.leaderboards.Leaderboards;
-import com.steamrankings.service.api.leaderboards.RankEntryByAchievements;
+import com.steamrankings.service.api.games.Games;
+import com.steamrankings.service.api.games.SteamGame;
+
 import com.steamrankings.website.Application;
 
+@Controller
 public class GamesController {
 
-    @RequestMapping("/games")
+    @RequestMapping("/gameslist")
     public String getGamesLeaderboard(Model model) {
-        List<RankEntryByAchievements> rankEntries = null;
+        List<SteamGame> rankEntries = null;
         try {
-            rankEntries = Leaderboards.getRanksByTotalPlayTime(1, 10, Application.client);
+            rankEntries = Games.getSteamGames(Application.client);
         } catch (ClientProtocolException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -30,7 +33,7 @@ public class GamesController {
             e.printStackTrace();
         }
 
-        if (rankEntries != null) {
+        /*if (rankEntries != null) {
             for (int i = 0; i < rankEntries.size(); i++) {
                 if (rankEntries.get(i).getCountryCode() != null && !rankEntries.get(i).getCountryCode().equals("")) {
                     String countryFlag = "/assets/images/country_flags/" + rankEntries.get(i).getCountryCode().toLowerCase() + ".png";
@@ -42,9 +45,9 @@ public class GamesController {
                             .getAchievementsTotal(), rankEntries.get(i).getCompletionRate(), rankEntries.get(i).getTotalPlayTime(), countryFlag));
                 }
             }
-        }
-        model.addAttribute("rankEntries", rankEntries);
-        return "games";
+        }*/
+        model.addAttribute("rankentries", rankEntries);
+        return "gameslist";
     }
 
     // @RequestMapping("/games")
