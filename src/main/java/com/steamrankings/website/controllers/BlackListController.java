@@ -21,26 +21,57 @@ import com.steamrankings.website.Application;
 public class BlackListController extends WebMvcConfigurerAdapter {
 	
 	@RequestMapping(value = "/blacklist", method = RequestMethod.GET)
-	public String showIndex(SteamProfile profile, String id, Model model) {
-		if (id != null) {
-			//model.addAttribute("error", id);
+	public String showIndex(SteamProfile profile, String error,String id, Model model) {
+		if(id!=null)
 			return "redirect:/leaderboard";
-			
+		if (error != null) {
+			System.out.println(error);
+			//model.addAttribute("error", id);
+			if (error.equals("3000")) {
+				model.addAttribute("error", "Steam ID entered Invalid");
+			}
+			else if(error.equals("4000"))
+			{
+				model.addAttribute("error", "Steam ID is in the blacklist, please contact an admin");
+			}
+			else if(error.equals("2000"))
+			{
+				model.addAttribute("error", "Steam ID does not exist");
+			}
+			else if(error.equals("1000"))
+			{
+				model.addAttribute("error", "Bad Argument entered");
+			}
+			else 
+			{
+				return "redirect:/leaderboard";
+			}
+			return "blacklist";
 		}
-		
+
 		return "blacklist";
+		
 	}
+	
 
 
 	@RequestMapping(value = "/blacklist", method = RequestMethod.POST)
 	public String addBlackList(SteamProfile steamProfile,
-			BindingResult bindingResult) throws JSONException, ClientProtocolException, APIException, IOException{
+			BindingResult bindingResult) {
 
 		if (bindingResult.hasErrors()) {
 			return "blacklist";
 		}
-		Profiles.addBlackList(handleQuery(steamProfile.getUserQuery()));
-		System.out.println("Switching to leaderboard");
+		try
+		{
+			String resp=Profiles.addBlackList(handleQuery(steamProfile.getUserQuery()),Application.client);
+			System.out.println("Resopnse"+resp);
+		}
+		catch (Exception e) {
+            if (e instanceof APIException) {
+                return "redirect:/blacklist?error=" + e.getMessage();
+            }
+		}
 		return "redirect:/blacklist?id="
 				+ handleQuery(steamProfile.getUserQuery());
 	}
