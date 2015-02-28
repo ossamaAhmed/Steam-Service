@@ -38,6 +38,26 @@
         <p th:text="${country_name}" />
         <p>1000 players</p>
       </div>
+      <table id="leaderboard-table">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Name</th>
+              <th>Achievements</th>
+              <th>Average Completion Rate</th>
+              <th>Total Play Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="rankentry : ${rankentries}">
+              <th th:text="${rankentry.rankNumber}"></th>
+              <td><a th:text="${rankentry.name}" th:href="@{'/profile?id=' + ${rankentry.id64}}" href=""></a></td>
+              <td th:text="${rankentry.achievementsTotal}"></td>
+              <td th:text="${rankentry.completionRate}"></td>
+              <td th:text="${rankentry.totalPlayTime}"></td>
+            </tr>
+          </tbody>
+        </table>
     </div>
   </body>
 </html>

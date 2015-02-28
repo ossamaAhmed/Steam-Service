@@ -1,13 +1,19 @@
 package com.steamrankings.website.controllers;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
+import org.apache.http.client.ClientProtocolException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.steamrankings.service.api.APIException;
+import com.steamrankings.service.api.leaderboards.Leaderboards;
+import com.steamrankings.service.api.leaderboards.RankEntryByAchievements;
 import com.steamrankings.website.Application;
 
 @Controller
@@ -35,6 +41,19 @@ public class CountriesController {
             return "countries";
         } else {
             if (Application.steam_countries.has(id)) {
+                try {
+                    List<RankEntryByAchievements> rankEntries = Leaderboards.getRanksByCountry(id, 0, 0, Application.client);
+                    model.addAttribute("rankentries", rankEntries);
+                } catch (ClientProtocolException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                } catch (APIException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
                 model.addAttribute("country_code", id);
                 model.addAttribute("country_name", Application.steam_countries.getJSONObject(id).getString("name"));
                 return "country";
