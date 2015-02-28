@@ -17,6 +17,7 @@ public class IndexController extends WebMvcConfigurerAdapter {
 		if (error != null) {
 			model.addAttribute("error", error);
 		}
+		
 		return "index";
 	}
 
@@ -32,7 +33,7 @@ public class IndexController extends WebMvcConfigurerAdapter {
 		if (bindingResult.hasErrors()) {
 			return "index";
 		}
-
+		
 		return "redirect:/profile?id="
 				+ handleQuery(steamProfile.getUserQuery());
 	}
