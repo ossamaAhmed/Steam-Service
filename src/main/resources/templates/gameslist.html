@@ -7,7 +7,7 @@
 
   <link type="text/css" rel='stylesheet' href="../assets/css/lib/normalize.css" th:href="@{/assets/css/lib/normalize.css}" />
 
-  <link type="text/css" rel='stylesheet' href="../assets/css/gamelist.css" th:href="@{/assets/css/leaderboard.css}" />
+  <link type="text/css" rel='stylesheet' href="../assets/css/gamelist.css" th:href="@{/assets/css/gamelist.css}" />
 
   <script src="../assets/js/lib/jquery.1.10.2.min.js" th:src="@{/assets/js/lib/jquery.1.10.2.min.js}"></script>
 
@@ -44,16 +44,15 @@
             <tr>
               <th>Logo</th>
               <th>Game</th>
-              <th>Top Player</th>
-              <th>Completion Rate</th>
+              <th>Players</th>
             </tr>
           </thead>
 			<tbody>
-		  		<tr th:each="game : ${games}">
-      			<td><img th:src="@{${game.logoUrl}}" /></td>
-      			<td><a th:text="${game.name}" th:href="@{'/game?id=' + ${game.id}}" href=""></a></td>        
-      			<td><a th:text="${game.player}" th:href="@{'/profile?id=' + ${game.id64}}" href=""></a></td>
-      			<td th:text="${game.completionRate}" />     
+		  		<tr th:each="rankentry : ${rankentries}">
+      			<td><img th:src="@{${rankentry.logoUrl}}" /></td>
+      			<td><a th:text="${rankentry.name}" th:href="@{'/game?id=' + ${rankentry.appId}}" href=""></a></td>        
+      		<!--<td><a th:text="${game.player}" th:href="@{'/profile?id=' + ${game.id64}}" href=""></a></td>
+      			<td th:text="${game.numberOfPlayers}" />     -->
 		  		</tr>
 			</tbody>
         </table>
