@@ -23,20 +23,19 @@ public class ProfileController {
     @RequestMapping("/profile")
     public String getProfile(String id, Model model) throws JSONException {
         // We add the error message to our model
-    	SteamProfile profile = null;
-    	try {
-    		System.out.println(id);
-    		profile = Profiles.getSteamUser(id);
-    	}
-        catch (Exception e) {
-        	if (e instanceof APIException) {
-        		return "redirect:/?error=" + e.getMessage();
-        	}
-        	if (e instanceof IllegalArgumentException) {
-        		return "redirect:/?error=" + e.getMessage();
-        	}
+        SteamProfile profile = null;
+        try {
+            System.out.println(id);
+            profile = Profiles.getSteamUser(id, Application.client);
+        } catch (Exception e) {
+            if (e instanceof APIException) {
+                return "redirect:/?error=" + e.getMessage();
+            }
+            if (e instanceof IllegalArgumentException) {
+                return "redirect:/?error=" + e.getMessage();
+            }
         }
-    	
+
         if (profile == null) {
             return "index";
         }
@@ -53,20 +52,30 @@ public class ProfileController {
             model.addAttribute("country", "");
             model.addAttribute("country_flag", "/assets/images/country_flags/_United Nations.png");
         }
+
         List<SteamGame> games = null;
-		try {
-			games = Games.getPlayedSteamGames(id);
-		} catch (Exception e) {
-			if (e instanceof APIException) {
-        		return "/?error=" + e.getMessage();
-        	}
+        try {
+            games = Games.getPlayedSteamGames(id, Application.client);
+        } catch (Exception e) {
+            if (e instanceof APIException) {
+                return "/?error=" + e.getMessage();
+            }
         }
-		if (games == null) {
-			return "index";
-		}
+        if (games == null) {
+            return "index";
+        }
+
         model.addAttribute("games", games);
 
-        List<GameAchievement> achievements = Achievements.getUnlockedAchievements(id);
+        List<GameAchievement> achievements = null;
+        try {
+            achievements = Achievements.getUnlockedAchievements(id, Application.client);
+        } catch (Exception e) {
+            if (e instanceof APIException) {
+                return "/?error=" + e.getMessage();
+            }
+        }
+
         model.addAttribute("achievements", achievements);
 
         return "profile";

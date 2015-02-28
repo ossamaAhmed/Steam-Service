@@ -2,9 +2,13 @@
 <projectDescription>
   <name>SteamRankingsWebsite</name>
   <comment>NO_M2ECLIPSE_SUPPORT: Project files created with the maven-eclipse-plugin are not supported in M2Eclipse.</comment>
+<<<<<<< HEAD
   <projects>
     <project>api</project>
   </projects>
+=======
+  <projects/>
+>>>>>>> 607580c665ab78e42eb23642ae1572afac536677
   <buildSpec>
     <buildCommand>
       <name>org.eclipse.jdt.core.javabuilder</name>

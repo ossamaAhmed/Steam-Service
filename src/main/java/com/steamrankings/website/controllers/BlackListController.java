@@ -1,5 +1,9 @@
 package com.steamrankings.website.controllers;
 
+import java.io.IOException;
+
+import org.apache.http.client.ClientProtocolException;
+import org.json.JSONException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -7,8 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+import com.steamrankings.service.api.APIException;
 import com.steamrankings.service.api.profiles.Profiles;
+import com.steamrankings.website.Application;
 import com.steamrankings.website.model.SteamProfile;
+import com.steamrankings.website.Application;
 
 @Controller
 public class BlackListController extends WebMvcConfigurerAdapter {
@@ -27,7 +34,7 @@ public class BlackListController extends WebMvcConfigurerAdapter {
 
 	@RequestMapping(value = "/blacklist", method = RequestMethod.POST)
 	public String addBlackList(SteamProfile steamProfile,
-			BindingResult bindingResult) {
+			BindingResult bindingResult) throws JSONException, ClientProtocolException, APIException, IOException{
 
 		if (bindingResult.hasErrors()) {
 			return "blacklist";

@@ -14,17 +14,24 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+import com.steamrankings.service.api.APIException;
+import com.steamrankings.service.api.SteamRankingsClient;
+
 @ComponentScan
 @EnableAutoConfiguration
 @EnableWebMvc
 public class Application extends WebMvcConfigurerAdapter {
     public static JSONObject steam_countries;
+    public static SteamRankingsClient client;
 
-    public static void main(String[] args) throws IOException, JSONException {
+    public static void main(String[] args) throws IOException, JSONException, APIException {
         // InputStream is = new FileInputStream("steam_countries.json");
         byte[] encoded = Files.readAllBytes(Paths.get("steam_countries.min.json"));
         String data = new String(encoded, StandardCharsets.UTF_8);
         steam_countries = new JSONObject(data);
+        
+        client = new SteamRankingsClient(SteamRankingsClient.DEVELOPMENT_ENVIRONMENT);
+        
         SpringApplication.run(Application.class, args);
     }
 
