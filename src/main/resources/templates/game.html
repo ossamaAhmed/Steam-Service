@@ -1,75 +1,57 @@
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
-  <link type="text/css" rel='stylesheet' href="../assets/css/lib/bootstrap.min.css" th:href="@{/assets/css/lib/bootstrap.min.css}" />
-
-  <link type="text/css" rel='stylesheet' href="../assets/css/lib/normalize.css" th:href="@{/assets/css/lib/normalize.css}" />
-
-  <link type="text/css" rel='stylesheet' href="../assets/css/gamelist.css" th:href="@{/assets/css/gamelist.css}" />
-
-  <title>Rank My Steam</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</head>
-
-<body>
-     <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="./index.html">Rank My Steam</a>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel='stylesheet' href="../assets/css/lib/bootstrap.min.css" th:href="@{/assets/css/lib/bootstrap.min.css}" />
+    <link type="text/css" rel='stylesheet' href="../assets/css/lib/normalize.css" th:href="@{/assets/css/lib/normalize.css}" />
+    <link type="text/css" rel='stylesheet' href="../assets/css/gamelist.css" th:href="@{/assets/css/gamelist.css}" />
+    <script src="../assets/js/lib/bootstrap.min.js" th:src="@{/assets/js/lib/bootstrap.min.js}"></script>
+    <script src="../assets/js/lib/ie10-viewport-bug-workaround.js" th:src="@{assets/js/lib/ie10-viewport-bug-workaround.js}"></script>
+    <title>Rank My Steam</title>
+  </head>
+    <body>
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="./index.html">Rank My Steam</a>
+          </div>
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="./leaderboard.html">Leaderboard</a></li>
+              <li class="active"><a href="./gameslist.html">Games</a></li>
+            </ul>
         </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="./leaderboard.html">Leaderboard</a></li>
-            <li class="active"><a href="./gameslist.html">Games</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
       </div>
     </nav>
     <div class="container">
       <div class="starter-template">
         <img th:src="@{${game_logo_Url}}" />
         <p th:text="${game_name}" />
-      <!--  <p th:text="${total_players}" />  -->
-
-	
-	<h1>Top Players</h1>
-	<table id="leaderboard-table">
-		<thead>
-			<tr>
+        <h1>Top Players</h1>
+        <table id="leaderboard-table">
+          <thead>
+            <tr>
               <th>Rank</th>
               <th>Name</th>
               <th>Number of Achievements</th>
-              <th>Completion Percentage</th>
               <th>Country</th>
             </tr>
-        </thead>
-		<tbody>
-		  <tr th:each="rankentry : ${rankentries}">
+          </thead>
+          <tbody>
+            <tr th:each="rankentry : ${rankentries}">
+              <td th:text="${rankentry.rankNumber}"></td>
               <td><a th:text="${rankentry.name}" th:href="@{'/profile?id=' + ${rankentry.id64}}" href=""></a></td>
               <td th:text="${rankentry.achievementsTotal}"></td>
-              <td th:text="${rankentry.completionRate}"></td>
-              <td><img th:src="@{${rankentry.countryCode}}" /></td>    
-		  </tr>
-		</tbody>
-	  </table>
-	  
+              <td><img th:src="@{'/assets/images/country_flags/64/' + ${rankentry.countryCode} + '.png'}" /></td>    
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    
-  <!-- /.container -->
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-
-    <script src="../assets/js/lib/bootstrap.min.js" th:src="@{/assets/js/lib/bootstrap.min.js}"></script> 
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../assets/js/lib/ie10-viewport-bug-workaround.js" th:src="@{assets/js/lib/ie10-viewport-bug-workaround.js}"></script>
-</body>
+  </body>
 </html>

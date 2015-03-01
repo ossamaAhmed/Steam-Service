@@ -1,9 +1,7 @@
 package com.steamrankings.website.controllers;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -28,7 +26,7 @@ public class CountriesController {
             ArrayList<Country> countries = new ArrayList<Country>();
 
             for (String key : Application.steam_countries.keySet()) {
-            	InputStream inStream = this.getClass().getResourceAsStream("/assets/images/country_flags/64/" + key.toLowerCase() + ".png");
+                InputStream inStream = this.getClass().getResourceAsStream("/assets/images/country_flags/64/" + key.toLowerCase() + ".png");
                 try {
 
                     if (inStream != null)
@@ -39,12 +37,12 @@ public class CountriesController {
                     countries.add(new Country("_United-Nations", Application.steam_countries.getJSONObject(key).getString("name")));
                 }
             }
-            
-    		Collections.sort(countries, new Comparator<Country>() {
-    			public int compare(Country o1, Country o2) {
-    				return o2.getName().compareTo(o1.getName());
-    			}
-    		});
+
+            Collections.sort(countries, new Comparator<Country>() {
+                public int compare(Country o1, Country o2) {
+                    return o2.getName().compareTo(o1.getName());
+                }
+            });
             Collections.reverse(countries);
             model.addAttribute("countries", countries);
             return "countries";
