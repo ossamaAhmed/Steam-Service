@@ -8,7 +8,7 @@
     <script type="text/javascript" src="../assets/js/main.js" th:src="@{/assets/js/main.js}"></script>
     <script src="../assets/js/lib/bootstrap.min.js" th:src="@{/assets/js/lib/bootstrap.min.js}"></script> 
     <script src="../assets/js/lib/ie10-viewport-bug-workaround.js" th:src="@{assets/js/lib/ie10-viewport-bug-workaround.js}"></script>
-    <title>RankMySteam</title>
+    <title>RankMySteam - About</title>
   </head>
   <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -20,12 +20,16 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="./index.html">RankMySteam</a>
+          <a class="navbar-brand" href="./index">RankMySteam</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="./leaderboard.html">Leaderboard</a></li>
-            <li class="active"><a href="./countries.html">Countries</a></li>
+            <li class="active"><a href="./leaderboard">Leaderboard</a></li>
+            <li class="active"><a href="./index">Profiles</a></li>
+            <li class="active"><a href="./countries">Countries</a></li>
+            <li class="active"><a href="./games">Games</a></li>
+            <li class="active"><a href="./blacklist">Blacklist</a></li>
+            <li class="active"><a href="./about">About</a></li>
           </ul>
         </div>
       </div>
@@ -33,11 +37,14 @@
 
     <div class="container">
       <div class="starter-template">
-		<h4>Backend Version</h4>
-		<p th:text="${version_backend}" />
-		<h4>Frontend Version</h4>
-		<p th:text="${version_frontend}" />
-		<a href="http://www.icondrawer.com">Country Icon Source</a>
+        <h1>About RankMySteam</h1>
+        <p>RankMySteam allows the Steam users to view achievements leaderboards</p>
+    		<h3>Backend Version</h3>
+    		<p th:text="${version_backend}" />
+    		<h3>Frontend Version</h3>
+    		<p th:text="${version_frontend}" />
+        <h3>Credits</h3>
+    		<a href="http://www.icondrawer.com">Country flags provided by IconDrawer</a>
       </div>
     </div>
   </body>

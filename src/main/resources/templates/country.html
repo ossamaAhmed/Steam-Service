@@ -20,12 +20,16 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="./index.html">RankMySteam</a>
+          <a class="navbar-brand" href="./index">RankMySteam</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="./leaderboard.html">Leaderboard</a></li>
-            <li class="active"><a href="./countries.html">Countries</a></li>
+            <li class="active"><a href="./leaderboard">Leaderboard</a></li>
+            <li class="active"><a href="./index">Profiles</a></li>
+            <li class="active"><a href="./countries">Countries</a></li>
+            <li class="active"><a href="./games">Games</a></li>
+            <li class="active"><a href="./blacklist">Blacklist</a></li>
+            <li class="active"><a href="./about">About</a></li>
           </ul>
         </div>
       </div>
@@ -33,15 +37,13 @@
 
     <div class="container">
       <div class="starter-template">
-        <p th:text="${error_msg}" />
-        <img th:src="@{'/assets/images/country_flags/64/' + ${country_code}} + '.png'" />
-        <p th:text="${country_name}" />
-        <p>1000 players</p>
+        <img th:src="@{'/assets/images/country_flags/128/' + ${country_code}} + '.png'" />
+        <h1 th:text="${country_name}" />
       </div>
       <table id="leaderboard-table">
           <thead>
             <tr>
-              <th>Rank</th>
+              <th>Global Rank</th>
               <th>Name</th>
               <th>Achievements</th>
               <th>Average Completion Rate</th>
@@ -58,6 +60,7 @@
             </tr>
           </tbody>
         </table>
+        <p th:text="${error_msg}" />
     </div>
   </body>
 </html>

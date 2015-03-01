@@ -23,13 +23,16 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="./index.html">Rank My Steam</a>
+          <a class="navbar-brand" href="./index">Rank My Steam</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="./leaderboard.html">Leaderboard</a></li>
-            <li class="active"><a href="./gameslist.html">Games</a></li>
-            <li class="active"><a href="./countries.html">Countries</a></li>
+            <li class="active"><a href="./leaderboard">Leaderboard</a></li>
+            <li class="active"><a href="./index">Profiles</a></li>
+            <li class="active"><a href="./countries">Countries</a></li>
+            <li class="active"><a href="./games">Games</a></li>
+            <li class="active"><a href="./blacklist">Blacklist</a></li>
+            <li class="active"><a href="./about">About</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -37,9 +40,8 @@
 
     <div class="container">
       <div class="starter-template">
-        <h1>Want to add your name to Rank My Steam?
-        <br /> Enter your name Steam ID here.
-        </h1>
+        <h1>Start by searching for a Steam profile</h1>
+        <p>You can enter a Steam ID64, a Steam Community profile ID, or a Steam Community profile URL</p>
 
         <form action="#" th:action="@{/}" th:object="${steamProfile}" method="post">
         <input type="text" th:field="*{userQuery}" />

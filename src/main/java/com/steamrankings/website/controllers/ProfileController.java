@@ -47,10 +47,10 @@ public class ProfileController {
             JSONObject countryData = Application.steam_countries.getJSONObject(profile.getCountryCode());
             model.addAttribute("country", countryData.getString("name"));
             System.out.println(profile.getCountryCode().toLowerCase() + ".png");
-            model.addAttribute("country_flag", "/assets/images/country_flags/" + profile.getCountryCode().toLowerCase() + ".png");
+            model.addAttribute("country_flag", "/assets/images/country_flags/128/" + profile.getCountryCode().toLowerCase() + ".png");
         } else {
             model.addAttribute("country", "");
-            model.addAttribute("country_flag", "/assets/images/country_flags/_United Nations.png");
+            model.addAttribute("country_flag", "/assets/images/country_flags/un.png");
         }
 
         List<SteamGame> games = null;
@@ -109,10 +109,10 @@ public class ProfileController {
             JSONObject countryData = Application.steam_countries.getJSONObject(profile.getCountryCode());
             model.addAttribute("country", countryData.getString("name"));
             System.out.println(profile.getCountryCode().toLowerCase() + ".png");
-            model.addAttribute("country_flag", "/assets/images/country_flags/" + profile.getCountryCode().toLowerCase() + ".png");
+            model.addAttribute("country_flag", "/assets/images/country_flags/128/" + profile.getCountryCode().toLowerCase() + ".png");
         } else {
             model.addAttribute("country", "");
-            model.addAttribute("country_flag", "/assets/images/country_flags/_United Nations.png");
+            model.addAttribute("country_flag", "/assets/images/country_flags/128/un.png");
         }
 
         List<SteamGame> games = null;

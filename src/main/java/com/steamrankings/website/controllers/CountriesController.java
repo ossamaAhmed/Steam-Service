@@ -32,9 +32,9 @@ public class CountriesController {
                     if (inStream != null)
                         countries.add(new Country(key.toLowerCase(), Application.steam_countries.getJSONObject(key).getString("name")));
                     else
-                        countries.add(new Country("_United-Nations", Application.steam_countries.getJSONObject(key).getString("name")));
+                        countries.add(new Country("un", Application.steam_countries.getJSONObject(key).getString("name")));
                 } catch (Exception e) {
-                    countries.add(new Country("_United-Nations", Application.steam_countries.getJSONObject(key).getString("name")));
+                    countries.add(new Country("un", Application.steam_countries.getJSONObject(key).getString("name")));
                 }
             }
 
@@ -51,6 +51,9 @@ public class CountriesController {
                 try {
                     List<RankEntryByAchievements> rankEntries = Leaderboards.getRanksByCountry(id, 0, 0, Application.client);
                     model.addAttribute("rankentries", rankEntries);
+                    if(rankEntries == null | rankEntries.isEmpty()) {
+                    	model.addAttribute("error_msg", "Unfortunatly there are no players from " + Application.steam_countries.getJSONObject(id).getString("name") + " in our database.");
+                    }
                 } catch (ClientProtocolException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();

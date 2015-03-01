@@ -11,7 +11,7 @@
 
   <script type="text/javascript" src="../assets/js/main.js" th:src="@{/assets/js/main.js}"></script>
 
-  <title>Rank My Steam</title>
+  <title>RankMySteam - Blacklist</title>
 </head>
 <body>
    <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -23,11 +23,16 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="./index.html">Rank My Steam</a>
+          <a class="navbar-brand" href="./index">RankMySteam</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="./leaderboard.html">Leaderboard</a></li>
+            <li class="active"><a href="./leaderboard">Leaderboard</a></li>
+            <li class="active"><a href="./index">Profiles</a></li>
+            <li class="active"><a href="./countries">Countries</a></li>
+            <li class="active"><a href="./games">Games</a></li>
+            <li class="active"><a href="./blacklist">Blacklist</a></li>
+            <li class="active"><a href="./about">About</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -36,9 +41,8 @@
     <div class="container">
 
       <div class="starter-template">
-        <h1>Want to remove your name from our board?
-        <br /> Enter your name Steam ID here.
-        </h1>
+        <h1>Blacklist</h1>
+        <p>If you wish to permenantly remove your Steam profile from RankMySteam, enter your Steam user ID below to be added to the site's blacklist.</p>
 
         <form action="#" th:action="@{'/blacklist'}" th:object="${steamProfile}" method="post">
         <input type="text" th:field="*{userQuery}" />
