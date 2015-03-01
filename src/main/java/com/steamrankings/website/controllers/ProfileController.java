@@ -80,4 +80,67 @@ public class ProfileController {
 
         return "profile";
     }
+    
+    
+    @RequestMapping("/update")
+    public String updateProfile(String id, Model model) {
+        // We add the error message to our model
+        SteamProfile profile = null;
+        try {
+            System.out.println(id);
+            profile = Profiles.updateUser(id, Application.client);
+        } catch (Exception e) {
+            if (e instanceof APIException) {
+                return "redirect:/?error=" + e.getMessage();
+            }
+            if (e instanceof IllegalArgumentException) {
+                return "redirect:/?error=" + e.getMessage();
+            }
+        }
+
+        if (profile == null) {
+            return "index";
+        }
+
+        model.addAttribute("full_avatar_url", profile.getFullAvatarUrl());
+        model.addAttribute("personal_name", profile.getPersonaName());
+        model.addAttribute("url", profile.getSteamCommunityUrl());
+        if (profile.getCountryCode() != null && Application.steam_countries.has(profile.getCountryCode())) {
+            JSONObject countryData = Application.steam_countries.getJSONObject(profile.getCountryCode());
+            model.addAttribute("country", countryData.getString("name"));
+            System.out.println(profile.getCountryCode().toLowerCase() + ".png");
+            model.addAttribute("country_flag", "/assets/images/country_flags/" + profile.getCountryCode().toLowerCase() + ".png");
+        } else {
+            model.addAttribute("country", "");
+            model.addAttribute("country_flag", "/assets/images/country_flags/_United Nations.png");
+        }
+
+        List<SteamGame> games = null;
+        try {
+            games = Games.getPlayedSteamGames(id, Application.client);
+        } catch (Exception e) {
+            if (e instanceof APIException) {
+                return "/?error=" + e.getMessage();
+            }
+        }
+        if (games == null) {
+            return "index";
+        }
+
+        model.addAttribute("games", games);
+
+        List<GameAchievement> achievements = null;
+        try {
+            achievements = Achievements.getUnlockedAchievements(id, Application.client);
+        } catch (Exception e) {
+            if (e instanceof APIException) {
+                return "/?error=" + e.getMessage();
+            }
+        }
+
+        model.addAttribute("achievements", achievements);
+
+        return "profile";
+    }
+    
 }
