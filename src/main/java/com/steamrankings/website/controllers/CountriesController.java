@@ -54,7 +54,7 @@ public class CountriesController {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
-                model.addAttribute("country_code", id);
+                model.addAttribute("country_code", id.toLowerCase());
                 model.addAttribute("country_name", Application.steam_countries.getJSONObject(id).getString("name"));
                 return "country";
             } else {
