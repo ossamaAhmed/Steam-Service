@@ -51,6 +51,8 @@
 		  		<tr th:each="rankentry : ${rankentries}">
       			<td><img th:src="@{${rankentry.logoUrl}}" /></td>
       			<td><a th:text="${rankentry.name}" th:href="@{'/game?id=' + ${rankentry.appId}}" href=""></a></td>        
+ 				<td># of Players <br></br>Top Player: XXXX</td>
+      		
       		<!--<td><a th:text="${game.player}" th:href="@{'/profile?id=' + ${game.id64}}" href=""></a></td>
       			<td th:text="${game.numberOfPlayers}" />     -->
 		  		</tr>

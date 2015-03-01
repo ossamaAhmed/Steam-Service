@@ -6,7 +6,7 @@
 
   <link type="text/css" rel='stylesheet' href="../assets/css/lib/normalize.css" th:href="@{/assets/css/lib/normalize.css}" />
 
-  <link type="text/css" rel='stylesheet' href="../assets/css/gamelist.css" th:href="@{/assets/css/game.css}" />
+  <link type="text/css" rel='stylesheet' href="../assets/css/gamelist.css" th:href="@{/assets/css/gamelist.css}" />
 
   <title>Rank My Steam</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -36,18 +36,26 @@
       <div class="starter-template">
         <img th:src="@{${game_logo_Url}}" />
         <p th:text="${game_name}" />
-        <p th:text="${total_players}" />
-        <p th:text="${hours_played}" />
-        <p th:text="${avg_completion_rate}" />
+      <!--  <p th:text="${total_players}" />  -->
+
 	
 	<h1>Top Players</h1>
 	<table id="leaderboard-table">
+		<thead>
+			<tr>
+              <th>Rank</th>
+              <th>Name</th>
+              <th>Number of Achievements</th>
+              <th>Completion Percentage</th>
+              <th>Country</th>
+            </tr>
+        </thead>
 		<tbody>
-		  <tr th:each="playerentry : ${playerentries}">
-              <td><a th:text="${playerentry.name}" th:href="@{'/profile?id=' + ${playerentry.id64}}" href=""></a></td>
-              <td th:text="${playerentry.achievementsTotal}"></td>
-              <td th:text="${playerentry.completionRate}"></td>
-              <td><img th:src="@{${playerentry.countryCode}}" /></td>    
+		  <tr th:each="rankentry : ${rankentries}">
+              <td><a th:text="${rankentry.name}" th:href="@{'/profile?id=' + ${rankentry.id64}}" href=""></a></td>
+              <td th:text="${rankentry.achievementsTotal}"></td>
+              <td th:text="${rankentry.completionRate}"></td>
+              <td><img th:src="@{${rankentry.countryCode}}" /></td>    
 		  </tr>
 		</tbody>
 	  </table>

@@ -32,7 +32,6 @@ public class GamesController {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
         /*if (rankEntries != null) {
             for (int i = 0; i < rankEntries.size(); i++) {
                 if (rankEntries.get(i).getCountryCode() != null && !rankEntries.get(i).getCountryCode().equals("")) {
