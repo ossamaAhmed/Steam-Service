@@ -36,9 +36,9 @@
         <table id="country-table">
           <tbody>
             <tr th:each="country : ${countries}">
-              <td><a th:href="@{'/countries?id=' + ${country.code}}" href=""><img th:src="@{'/assets/images/country_flags/64/' + ${country.code}} + '.png'" /></a></td> 
-              <td><a th:text="${country.name}" th:href="@{'/countries?id=' + ${country.code}}" href=""></a></td>
-              <td>Top Player: Viper the Vengeful Spirit</td>
+              <td><a th:href="@{'/countries?id=' + ${country.UpperCaseCode}}" href=""><img th:src="@{'/assets/images/country_flags/64/' + ${country.code}} + '.png'" /></a></td> 
+              <td><a th:text="${country.name}" th:href="@{'/countries?id=' + ${country.UpperCaseCode}}" href=""></a></td>
+              <td>1000 players <br></br>Top Player: Viper the Vengeful Spirit</td>
             </tr>
           </tbody>
         </table>
