@@ -12,4 +12,8 @@ public class Country {
     public String getUpperCaseCode() {
     	return code.toUpperCase();
     }
+    
+    public String getName() {
+    	return name;
+    }
 }
