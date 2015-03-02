@@ -62,7 +62,7 @@
               <td th:text="${rankentry.achievementsTotal}">0</td>
               <td th:text="${rankentry.completionRate}">100</td>
               <td th:text="${rankentry.totalPlayTime}">100</td>
-              <td><img th:src="@{${rankentry.countryCode}}" /></td>
+              <td><a th:href="@{'/countries?id=' + ${rankentry.countryCode}}" href=""><img th:src="@{'/assets/images/country_flags/48/' + ${rankentry.countryCode}} + '.png'" /></a></td>
             </tr>
           </tbody>
         </table>

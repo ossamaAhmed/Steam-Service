@@ -48,6 +48,7 @@ public class CountriesController {
             model.addAttribute("countries", countries);
             return "countries";
         } else {
+        	id = id.toUpperCase();
             if (Application.steam_countries.has(id)) {
                 try {
                     List<RankEntryByAchievements> rankEntries = Leaderboards.getRanksByCountry(id, 0, 0, Application.client);

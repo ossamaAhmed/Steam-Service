@@ -88,11 +88,11 @@ public class LeaderboardController {
         if (rankEntries != null) {
             for (int i = 0; i < rankEntries.size(); i++) {
                 if (rankEntries.get(i).getCountryCode() != null && !rankEntries.get(i).getCountryCode().equals("")) {
-                    String countryFlag = "/assets/images/country_flags/64/" + rankEntries.get(i).getCountryCode().toLowerCase() + ".png";
+                    String countryFlag = rankEntries.get(i).getCountryCode().toLowerCase();
                     rankEntries.set(i, new RankEntryByAchievements(rankEntries.get(i).getRankNumber(), rankEntries.get(i).getId64(), rankEntries.get(i).getName(), rankEntries.get(i)
                             .getAchievementsTotal(), rankEntries.get(i).getCompletionRate(), rankEntries.get(i).getTotalPlayTime() ,  countryFlag));
                 } else {
-                    String countryFlag = "/assets/images/country_flags/64/un.png";
+                    String countryFlag = "un";
                     rankEntries.set(i, new RankEntryByAchievements(rankEntries.get(i).getRankNumber(), rankEntries.get(i).getId64(), rankEntries.get(i).getName(), rankEntries.get(i)
                             .getAchievementsTotal(), rankEntries.get(i).getCompletionRate(), rankEntries.get(i).getTotalPlayTime(), countryFlag));
                 }
@@ -108,11 +108,11 @@ public class LeaderboardController {
         if (rankEntries != null) {
             for (int i = 0; i < rankEntries.size(); i++) {
                 if (rankEntries.get(i).getCountryCode() != null && !rankEntries.get(i).getCountryCode().equals("")) {
-                    String countryFlag = "/assets/images/country_flags/64/" + rankEntries.get(i).getCountryCode().toLowerCase() + ".png";
+                    String countryFlag = rankEntries.get(i).getCountryCode().toLowerCase();
                     rankEntries.set(i, new RankEntryByAchievements(rankEntries.get(i).getRankNumber(), rankEntries.get(i).getId64(), rankEntries.get(i).getName(), rankEntries.get(i)
                             .getAchievementsTotal(), rankEntries.get(i).getCompletionRate(), rankEntries.get(i).getTotalPlayTime() ,  countryFlag));
                 } else {
-                    String countryFlag = "/assets/images/country_flags/64/un.png";
+                    String countryFlag = "un";
                     rankEntries.set(i, new RankEntryByAchievements(rankEntries.get(i).getRankNumber(), rankEntries.get(i).getId64(), rankEntries.get(i).getName(), rankEntries.get(i)
                             .getAchievementsTotal(), rankEntries.get(i).getCompletionRate(), rankEntries.get(i).getTotalPlayTime(), countryFlag));
                 }
@@ -127,11 +127,11 @@ public class LeaderboardController {
         if (rankEntries != null) {
             for (int i = 0; i < rankEntries.size(); i++) {
                 if (rankEntries.get(i).getCountryCode() != null && !rankEntries.get(i).getCountryCode().equals("")) {
-                    String countryFlag = "/assets/images/country_flags/48/" + rankEntries.get(i).getCountryCode().toLowerCase() + ".png";
+                    String countryFlag = rankEntries.get(i).getCountryCode().toLowerCase();
                     rankEntries.set(i, new RankEntryByAchievements(rankEntries.get(i).getRankNumber(), rankEntries.get(i).getId64(), rankEntries.get(i).getName(), rankEntries.get(i)
                             .getAchievementsTotal(), rankEntries.get(i).getCompletionRate(), rankEntries.get(i).getTotalPlayTime(), countryFlag));
                 } else {
-                    String countryFlag = "/assets/images/country_flags/48/un.png";
+                    String countryFlag = "un";
                     rankEntries.set(i, new RankEntryByAchievements(rankEntries.get(i).getRankNumber(), rankEntries.get(i).getId64(), rankEntries.get(i).getName(), rankEntries.get(i)
                             .getAchievementsTotal(), rankEntries.get(i).getCompletionRate(), rankEntries.get(i).getTotalPlayTime(), countryFlag));
                 }

@@ -47,10 +47,12 @@ public class ProfileController {
         if (profile.getCountryCode() != null && Application.steam_countries.has(profile.getCountryCode())) {
             JSONObject countryData = Application.steam_countries.getJSONObject(profile.getCountryCode());
             model.addAttribute("country", countryData.getString("name"));
+            model.addAttribute("country_code", profile.getCountryCode());
             System.out.println(profile.getCountryCode().toLowerCase() + ".png");
             model.addAttribute("country_flag", "/assets/images/country_flags/128/" + profile.getCountryCode().toLowerCase() + ".png");
         } else {
-            model.addAttribute("country", "");
+            model.addAttribute("United Nations", "");
+            model.addAttribute("country_code", "UN");
             model.addAttribute("country_flag", "/assets/images/country_flags/un.png");
         }
 

@@ -41,7 +41,7 @@
       <div class="starter-template">
         <img th:src="@{${full_avatar_url}}" />
         <p th:text="${personal_name}" />
-        <p th:text="${country}" /><img th:src="@{${country_flag}}" />
+        <p th:text="${country}" /><a th:href="@{'/countries?id=' + ${country_code}}" href=""><img th:src="@{${country_flag}}" /></a>
         <p><a th:href="@{'/update?id=' + ${id}}" href="">Update</a></p>
         <h1>Top 30 Most Played Games</h1>
 	<table id="leaderboard-table">
