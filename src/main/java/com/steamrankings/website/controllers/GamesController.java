@@ -30,7 +30,7 @@ public class GamesController {
             try {
                 steamGames = Games.getSteamGames(Application.client);
                 for(SteamGame steamGame : steamGames) {
-                	gameEntries.add(new GameEntry(steamGame, Profiles.getTopGamePlayer(Integer.toString(steamGame.getAppId()), Application.client)))
+                	gameEntries.add(new GameEntry(steamGame, Profiles.getTopGamePlayer(Integer.toString(steamGame.getAppId()), Application.client)));
                 }
             } catch (ClientProtocolException e) {
                 // TODO Auto-generated catch block
