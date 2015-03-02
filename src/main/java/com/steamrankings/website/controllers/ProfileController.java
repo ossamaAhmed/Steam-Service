@@ -40,6 +40,7 @@ public class ProfileController {
             return "index";
         }
 
+        model.addAttribute("id", profile.getSteamId64());
         model.addAttribute("full_avatar_url", profile.getFullAvatarUrl());
         model.addAttribute("personal_name", profile.getPersonaName());
         model.addAttribute("url", profile.getSteamCommunityUrl());
