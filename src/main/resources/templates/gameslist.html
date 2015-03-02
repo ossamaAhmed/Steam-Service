@@ -54,8 +54,8 @@
 			<tbody>
 		  		<tr th:each="game : ${games}">
       			<td><img th:src="@{${game.steamGame.logoUrl}}" /></td>
-      			<td><a th:text="${game.steamGame.name}" th:href="@{'/games?id=' + ${game.appId}}" href=""></a></td>        
- 				    <td th:text="${game.topPlayer}"/ >
+      			<td><a th:text="${game.steamGame.name}" th:href="@{'/games?id=' + ${game.steamGame.appId}}" href=""></a></td>        
+ 				    <td th:text="${game.topPlayer}" />
       		
       		<!--<td><a th:text="${game.player}" th:href="@{'/profile?id=' + ${game.id64}}" href=""></a></td>
       			<td th:text="${game.numberOfPlayers}" />     -->
