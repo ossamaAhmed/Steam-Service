@@ -1,9 +1,12 @@
 package com.steamrankings.website.controllers;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.http.client.ClientProtocolException;
+import org.codehaus.jackson.JsonParseException;
+import org.codehaus.jackson.map.JsonMappingException;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +16,7 @@ import com.steamrankings.service.api.games.Games;
 import com.steamrankings.service.api.games.SteamGame;
 import com.steamrankings.service.api.leaderboards.Leaderboards;
 import com.steamrankings.service.api.leaderboards.RankEntryByAchievements;
+import com.steamrankings.service.api.profiles.Profiles;
 import com.steamrankings.website.Application;
 
 @Controller
@@ -22,8 +26,12 @@ public class GamesController {
     public String getGames(String id, Model model) {
         if(id == null || id.isEmpty()) {
             List<SteamGame> steamGames = null;
+            ArrayList<GameEntry> gameEntries = new ArrayList<GameEntry>();
             try {
                 steamGames = Games.getSteamGames(Application.client);
+                for(SteamGame steamGame : steamGames) {
+                	gameEntries.add(new GameEntry(steamGame, Profiles.getTopGamePlayer(Integer.toString(steamGame.getAppId()), Application.client)))
+                }
             } catch (ClientProtocolException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -38,6 +46,25 @@ public class GamesController {
             return "gameslist";
         } else {
             List<RankEntryByAchievements> rankEntries = null;
+            try {
+				SteamGame steamGame = Games.getSteamGame(Integer.parseInt(id), Application.client);
+			} catch (JsonParseException e1) {
+				model.addAttribute("error_msg", "Sorry but something went wrong.");
+				return "error";
+			} catch (JsonMappingException e1) {
+				model.addAttribute("error_msg", "Sorry but something went wrong.");
+				return "error";
+			} catch (NumberFormatException e1) {
+				model.addAttribute("error_msg", id + " is an invalid game ID.");
+				return "error";
+			} catch (APIException e1) {
+				model.addAttribute("error_msg", e1.getMessage());
+				return "error";
+			} catch (IOException e1) {
+				model.addAttribute("error_msg", "Sorry but something went wrong.");
+				return "error";
+			}
+            
             try {
                 rankEntries = Leaderboards.getRanksByGameLeaderboard(Integer.parseInt(id), 0, 0, Application.client);
                 
@@ -54,22 +81,24 @@ public class GamesController {
                         }
                     }
                     model.addAttribute("rankentries", rankEntries);
+                    return "game";
                 }  
                 
             } catch (NumberFormatException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+				model.addAttribute("error_msg", "Sorry but something went wrong.");
+				return "error";
             } catch (ClientProtocolException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+				model.addAttribute("error_msg", "Sorry but something went wrong.");
+				return "error";
             } catch (APIException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+				model.addAttribute("error_msg", e.getMessage());
+				return "error";
             } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+				model.addAttribute("error_msg", "Sorry but something went wrong.");
+				return "error";
             }
-            model.addAttribute("rankentries", rankEntries);
+            
+
             return "game";
         }
     }
