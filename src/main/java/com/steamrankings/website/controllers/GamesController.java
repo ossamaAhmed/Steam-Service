@@ -42,7 +42,7 @@ public class GamesController {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-            model.addAttribute("games", steamGames);
+            model.addAttribute("games", gameEntries);
             return "gameslist";
         } else {
             List<RankEntryByAchievements> rankEntries = null;
