@@ -28,28 +28,14 @@ public class CountriesController {
 
             for (String key : Application.steam_countries.keySet()) {
                 InputStream inStream = this.getClass().getResourceAsStream("/assets/images/country_flags/64/" + key.toLowerCase() + ".png");
-                String player = null;
-                
-                try {
-					player = Profiles.getTopCountryPlayer(key, Application.client);
-				} catch (ClientProtocolException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} catch (APIException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
                 
                 try {
                     if (inStream != null)
-                        countries.add(new Country(key.toLowerCase(), Application.steam_countries.getJSONObject(key).getString("name"), player));
+                        countries.add(new Country(key.toLowerCase(), Application.steam_countries.getJSONObject(key).getString("name")));
                     else
-                        countries.add(new Country("un", Application.steam_countries.getJSONObject(key).getString("name"), player));
+                        countries.add(new Country("un", Application.steam_countries.getJSONObject(key).getString("name")));
                 } catch (Exception e) {
-                    countries.add(new Country("un", Application.steam_countries.getJSONObject(key).getString("name"), player));
+                    countries.add(new Country("un", Application.steam_countries.getJSONObject(key).getString("name")));
                 }
             }
 
