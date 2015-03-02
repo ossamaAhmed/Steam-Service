@@ -42,7 +42,7 @@
             <tr th:each="country : ${countries}">
               <td><a th:href="@{'/countries?id=' + ${country.UpperCaseCode}}" href=""><img th:src="@{'/assets/images/country_flags/64/' + ${country.code}} + '.png'" /></a></td> 
               <td><a th:text="${country.name}" th:href="@{'/countries?id=' + ${country.UpperCaseCode}}" href=""></a></td>
-              <td>Top Player: TODO!!!!!!!!!!!!!!</td>
+              <td th:text="${country.topPlayer}" />
             </tr>
           </tbody>
         </table>

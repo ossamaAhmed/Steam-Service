@@ -40,6 +40,22 @@ public class GamesController {
             List<RankEntryByAchievements> rankEntries = null;
             try {
                 rankEntries = Leaderboards.getRanksByGameLeaderboard(Integer.parseInt(id), 0, 0, Application.client);
+                
+                if (rankEntries != null) {
+                    for (int i = 0; i < rankEntries.size(); i++) {
+                        if (rankEntries.get(i).getCountryCode() != null && !rankEntries.get(i).getCountryCode().equals("")) {
+                            String countryFlag = rankEntries.get(i).getCountryCode().toLowerCase();
+                            rankEntries.set(i, new RankEntryByAchievements(rankEntries.get(i).getRankNumber(), rankEntries.get(i).getId64(), rankEntries.get(i).getName(), rankEntries.get(i)
+                                    .getAchievementsTotal(), rankEntries.get(i).getCompletionRate(), rankEntries.get(i).getTotalPlayTime(), countryFlag));
+                        } else {
+                            String countryFlag = "un";
+                            rankEntries.set(i, new RankEntryByAchievements(rankEntries.get(i).getRankNumber(), rankEntries.get(i).getId64(), rankEntries.get(i).getName(), rankEntries.get(i)
+                                    .getAchievementsTotal(), rankEntries.get(i).getCompletionRate(), rankEntries.get(i).getTotalPlayTime(), countryFlag));
+                        }
+                    }
+                    model.addAttribute("rankentries", rankEntries);
+                }  
+                
             } catch (NumberFormatException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
