@@ -42,7 +42,20 @@
         <img th:src="@{${full_avatar_url}}" />
         <p th:text="${personal_name}" />
         <p th:text="${country}" /><a th:href="@{'/countries?id=' + ${country_code}}" href=""><img th:src="@{${country_flag}}" /></a>
-        <p><a th:href="@{'/update?id=' + ${id}}" href="">Update</a></p>
+        <p><a th:href="@{'/update?id=' + ${id}}" href="">Update</a><br/>
+        
+        <a
+        th:href="@{'https://www.facebook.com/sharer/sharer.php?u=http://mikemontreal.ignorelist.com:6002/profile?id=' + ${id}}"
+        href="https://www.facebook.com/sharer/sharer.php?u=rankmysteam.me">Share on Facebook</a>
+        
+        <a 
+        th:href="@{'https://twitter.com/home?status=rankmysteam.me/profile?id=' + ${id}}"
+        href="https://twitter.com/home?status=rankmysteam.me">Share on Twitter</a>
+        
+        <a
+        th:href="@{'https://plus.google.com/share?url=rankmysteam.me/profile?=' + ${id}}"         
+        href="https://plus.google.com/share?url=rankmysteam.me">Share on Google+</a>
+      </p>
         <h1>Top 30 Most Played Games</h1>
 	<table id="leaderboard-table">
 		<tbody>
