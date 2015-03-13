@@ -43,6 +43,7 @@ public class GamesController {
                 e.printStackTrace();
             }
             model.addAttribute("games", gameEntries);
+            model.addAttribute("game_name", gameEntries.get(Integer.parseInt(id)).getSteamGame().getName());
             return "gameslist";
         } else {
             List<RankEntryByAchievements> rankEntries = null;
