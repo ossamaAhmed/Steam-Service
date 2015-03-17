@@ -1,5 +1,7 @@
 package com.steamrankings.website.controllers;
 
+import java.util.ArrayList;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -7,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+import com.steamrankings.service.api.news.News;
+import com.steamrankings.service.api.news.SteamNews;
+import com.steamrankings.website.Application;
 import com.steamrankings.website.model.SteamProfile;
 
 @Controller
@@ -35,6 +40,14 @@ public class IndexController extends WebMvcConfigurerAdapter {
 			{
 				model.addAttribute("error", error);
 			}
+		}
+		
+		ArrayList<SteamNews> steamNews = new ArrayList<SteamNews>();
+		try {
+			steamNews = News.getSteamNews(Application.client);
+			model.addAttribute("steamnews", steamNews.get(0));
+		} catch (Exception e) {
+			// should not occur
 		}
 		
 		return "index";
