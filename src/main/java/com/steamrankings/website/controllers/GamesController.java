@@ -18,6 +18,7 @@ import com.steamrankings.service.api.leaderboards.Leaderboards;
 import com.steamrankings.service.api.leaderboards.RankEntryByAchievements;
 import com.steamrankings.service.api.profiles.Profiles;
 import com.steamrankings.service.api.achievements.GameAchievement;
+import com.steamrankings.service.api.achievements.Achievements;
 import com.steamrankings.website.Application;
 
 @Controller
@@ -47,7 +48,7 @@ public class GamesController {
             return "gameslist";
         } else {
             List<RankEntryByAchievements> rankEntries = null;
-            List<GameAchievements> achievements = null;
+            List<GameAchievement> achievements = null;
             try {
 				SteamGame steamGame = Games.getSteamGame(Integer.parseInt(id), Application.client);
 				model.addAttribute("game_name", steamGame.getName());
@@ -71,7 +72,7 @@ public class GamesController {
             
             try {
                 rankEntries = Leaderboards.getRanksByGameLeaderboard(Integer.parseInt(id), 0, 0, Application.client);
-                achievements = Achievements.getRarestGameAchievements(Integer.parseInt(id),Application.client);
+                achievements = Games.getRarestAchievements(Integer.parseInt(id),Application.client);
                 
                 if (rankEntries != null) {
                     for (int i = 0; i < rankEntries.size(); i++) {
@@ -89,7 +90,7 @@ public class GamesController {
                     return "game";
                 } 
                 
-                if (achievenments != null){
+                if (achievements != null){
                 	model.addAttribute("achievements", achievements);
                 }
                 
