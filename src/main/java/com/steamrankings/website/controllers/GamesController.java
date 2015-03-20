@@ -17,6 +17,7 @@ import com.steamrankings.service.api.games.SteamGame;
 import com.steamrankings.service.api.leaderboards.Leaderboards;
 import com.steamrankings.service.api.leaderboards.RankEntryByAchievements;
 import com.steamrankings.service.api.profiles.Profiles;
+import com.steamrankings.service.api.achievements.GameAchievement;
 import com.steamrankings.website.Application;
 
 @Controller
@@ -43,12 +44,14 @@ public class GamesController {
                 e.printStackTrace();
             }
             model.addAttribute("games", gameEntries);
-            model.addAttribute("game_name", gameEntries.get(Integer.parseInt(id)).getSteamGame().getName());
             return "gameslist";
         } else {
             List<RankEntryByAchievements> rankEntries = null;
+            List<GameAchievements> achievements = null;
             try {
 				SteamGame steamGame = Games.getSteamGame(Integer.parseInt(id), Application.client);
+				model.addAttribute("game_name", steamGame.getName());
+				model.addAttribute("game_logo_Url", steamGame.getLogoUrl());
 			} catch (JsonParseException e1) {
 				model.addAttribute("error_msg", "Sorry but something went wrong.");
 				return "error";
@@ -68,6 +71,7 @@ public class GamesController {
             
             try {
                 rankEntries = Leaderboards.getRanksByGameLeaderboard(Integer.parseInt(id), 0, 0, Application.client);
+                achievements = Achievements.getRarestGameAchievements(Integer.parseInt(id),Application.client);
                 
                 if (rankEntries != null) {
                     for (int i = 0; i < rankEntries.size(); i++) {
@@ -83,7 +87,11 @@ public class GamesController {
                     }
                     model.addAttribute("rankentries", rankEntries);
                     return "game";
-                }  
+                } 
+                
+                if (achievenments != null){
+                	model.addAttribute("achievements", achievements);
+                }
                 
             } catch (NumberFormatException e) {
 				model.addAttribute("error_msg", "Sorry but something went wrong.");

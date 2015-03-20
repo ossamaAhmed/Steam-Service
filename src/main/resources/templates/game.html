@@ -55,6 +55,26 @@
             </tr>
           </tbody>
         </table>
+        
+        <h2>Rarest Achievements</h2>
+        <table id="leaderboard-table">
+          <thead>
+            <tr>
+              <th>Icon</th>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Percent Unlocked</th>
+            </tr>
+          </thead>
+		<tbody>
+		  <tr th:each="achievement : ${achievements}">
+			<td><img th:src="@{${achievement.unlockedIconUrl}}" /></td>
+			<td th:text="${achievement.name}"></td>
+			<td th:text="${achievement.description}"></td>
+			<td th:text="${achievement.percentageAchieved}"></td>
+		  </tr>
+		</tbody>
+        </table>
       </div>
     </div>
   </body>
