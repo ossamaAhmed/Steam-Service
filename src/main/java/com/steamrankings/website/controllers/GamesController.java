@@ -87,12 +87,12 @@ public class GamesController {
                         }
                     }
                     model.addAttribute("rankentries", rankEntries);
-                    return "game";
                 } 
                 
                 if (achievements != null){
                 	model.addAttribute("achievements", achievements);
                 }
+
                 
             } catch (NumberFormatException e) {
 				model.addAttribute("error_msg", "Sorry but something went wrong.");
