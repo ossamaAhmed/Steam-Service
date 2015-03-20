@@ -49,6 +49,9 @@
 
         <p th:text="${error}" />
         </form>
+        <label th:utext="${steamnews != null} ? ${steamnews.title} : 'No news from expected Random Game'"></label>
+        <label th:utext="${steamnews != null} ? ${steamnews.url}"></label>
+        <label th:utext="${steamnews != null} ? ${steamnews.contents}"></label>
       </div>
     </div><!-- /.container -->
 

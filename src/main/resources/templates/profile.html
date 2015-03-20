@@ -46,15 +46,16 @@
         
         <a
         th:href="@{'https://www.facebook.com/sharer/sharer.php?u=http://mikemontreal.ignorelist.com:6002/profile?id=' + ${id}}"
-        href="https://www.facebook.com/sharer/sharer.php?u=rankmysteam.me">Share on Facebook</a>
+        href="https://www.facebook.com/sharer/sharer.php?u=rankmysteam.me"><img th:src="@{'/assets/images/socialmediaicons/facebook-box.svg'}" /></a>
         
         <a 
         th:href="@{'https://twitter.com/home?status=rankmysteam.me/profile?id=' + ${id}}"
-        href="https://twitter.com/home?status=rankmysteam.me">Share on Twitter</a>
+        href="https://twitter.com/home?status=rankmysteam.me"><img th:src="@{'/assets/images/socialmediaicons/twitter.svg'}" /></a>
         
         <a
-        th:href="@{'https://plus.google.com/share?url=rankmysteam.me/profile?=' + ${id}}"         
-        href="https://plus.google.com/share?url=rankmysteam.me">Share on Google+</a>
+        th:href="@{'https://plus.google.com/share?url=rsankmysteam.me/profile?=' + ${id}}"    
+        href="https://plus.google.com/share?url=rankmysteam.me"><img th:src="@{'/assets/images/socialmediaicons/google-plus.svg'}" /></a>
+
       </p>
         <h1>Top 30 Most Played Games</h1>
 	<table id="leaderboard-table">
