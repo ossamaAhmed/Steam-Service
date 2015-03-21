@@ -84,8 +84,15 @@
 	<table id="leaderboard-table">
 		<tbody>
 		  <tr th:each="friend : ${friends}">
-			<td><a th:href="@{'/profile?id=' + ${friend.steamId64}}" href=""><img th:src="@{${friend.mediumAvatarUrl}}" /></a></td>
-			<td><a th:text="${friend.personaName}" th:href="@{'/profile?id=' + ${friend.steamId64}}" href=""></a></td>
+			<td>
+        <a th:href="@{'/profile?id=' + ${friend.steamId64}}" href=""><img th:src="@{${friend.mediumAvatarUrl}}" /></a>
+      </td>
+			<td>
+        <a th:text="${friend.personaName}" th:href="@{'/profile?id=' + ${friend.steamId64}}" href=""></a>
+      </td>
+      <td>
+        <a th:href="@{'/versus?id1=' + ${friend.steamId64} + '&amp;id2=' + ${id}}">Compare</a>        
+      </td>
 		  </tr>
 		</tbody>
 	  </table>

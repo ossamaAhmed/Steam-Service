@@ -173,6 +173,8 @@ public class ProfileController {
         }
         
         model.addAttribute("friends", friends);
+        //http://mikemontreal.ignorelist.com:6002/versus?id1=76561197997213801&id2=Nikolaos9029
+
 
         return "profile";
     }
