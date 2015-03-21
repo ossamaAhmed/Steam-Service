@@ -30,7 +30,7 @@ public class IndexController extends WebMvcConfigurerAdapter {
 			}
 			else if(error.equals("2000"))
 			{
-				model.addAttribute("error", "Steam ID does not exist");
+				model.addAttribute("error", "Steam ID does not exist or is private");
 			}
 			else if(error.equals("1000"))
 			{
