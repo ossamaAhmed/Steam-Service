@@ -80,6 +80,21 @@ public class ProfileController {
         }
 
         model.addAttribute("achievements", achievements);
+        
+        List<SteamProfile> friends = null;
+        try {
+            friends = Profiles.getSteamFriends(id, Application.client);
+        } catch (Exception e) {
+            if (e instanceof APIException) {
+                return "/?error=" + e.getMessage();
+            }
+        }
+        
+        if(friends.isEmpty()) {
+            model.addAttribute("no_friends_msg", "This user has no friends");
+        }
+        
+        model.addAttribute("friends", friends);
 
         return "profile";
     }
@@ -106,6 +121,7 @@ public class ProfileController {
         }
 
         model.addAttribute("full_avatar_url", profile.getFullAvatarUrl());
+        model.addAttribute("user_id", profile.getSteamId64());
         model.addAttribute("personal_name", profile.getPersonaName());
         model.addAttribute("url", profile.getSteamCommunityUrl());
         if (profile.getCountryCode() != null && Application.steam_countries.has(profile.getCountryCode())) {
@@ -142,6 +158,21 @@ public class ProfileController {
         }
 
         model.addAttribute("achievements", achievements);
+        
+        List<SteamProfile> friends = null;
+        try {
+            friends = Profiles.getSteamFriends(id, Application.client);
+        } catch (Exception e) {
+            if (e instanceof APIException) {
+                return "/?error=" + e.getMessage();
+            }
+        }
+        
+        if(friends.isEmpty()) {
+            model.addAttribute("no_friends_msg", "This user has no friends");
+        }
+        
+        model.addAttribute("friends", friends);
 
         return "profile";
     }

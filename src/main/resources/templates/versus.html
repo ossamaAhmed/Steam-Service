@@ -39,56 +39,24 @@
 
     <div class="container">
       <div class="starter-template">
-        <img th:src="@{${full_avatar_url}}" />
-        <p th:text="${personal_name}" />
-        <p th:text="${country}" /><a th:href="@{'/countries?id=' + ${country_code}}" href=""><img th:src="@{${country_flag}}" /></a>
-        <p><a th:href="@{'/update?id=' + ${id}}" href="">Update</a><br/>
-        
-        <a
-        th:href="@{'https://www.facebook.com/sharer/sharer.php?u=http://mikemontreal.ignorelist.com:6002/profile?id=' + ${id}}"
-        href="https://www.facebook.com/sharer/sharer.php?u=rankmysteam.me"><img th:src="@{'/assets/images/socialmediaicons/facebook-box.svg'}" /></a>
-        
-        <a 
-        th:href="@{'https://twitter.com/home?status=rankmysteam.me/profile?id=' + ${id}}"
-        href="https://twitter.com/home?status=rankmysteam.me"><img th:src="@{'/assets/images/socialmediaicons/twitter.svg'}" /></a>
-        
-        <a
-        th:href="@{'https://plus.google.com/share?url=rsankmysteam.me/profile?=' + ${id}}"    
-        href="https://plus.google.com/share?url=rankmysteam.me"><img th:src="@{'/assets/images/socialmediaicons/google-plus.svg'}" /></a>
-
-      </p>
-        <h1>Top 30 Most Played Games</h1>
-	<table id="leaderboard-table">
-		<tbody>
-		  <tr th:each="game : ${games}">
-      <td><img th:src="@{${game.logoUrl}}" /></td>        
-			<td th:text="${game.name}" />
-      <td th:text="${game.appId}" />      
-		  </tr>
-		</tbody>
-	  </table>
-	  
-	<h1>30 Most Recent Achievements</h1>
-	<table id="leaderboard-table">
-		<tbody>
-		  <tr th:each="achievement : ${achievements}">
-			<td><img th:src="@{${achievement.unlockedIconUrl}}" /></td>
-			<td th:text="${achievement.name}"></td>
-			<td th:text="${achievement.description}"></td>
-		  </tr>
-		</tbody>
-	  </table>
+		<table id="leaderboard-table">
+			<thead>
+				<tr>
+					<th>Game</th>
+					<th><p th:text="${user_1_name}" /><img th:src="@{${user_1_avatar}}" /></th>
+					<th><p th:text="${user_2_name}" /><img th:src="@{${user_2_avatar}}" /></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="result : ${results}">
+					<td><img th:src="@{${result.game.logoUrl}}" /></td>        
+					<td th:text="${result.completionRateOfUser1}"></td>
+					<td th:text="${result.completionRateOfUser2}"></td>      
+				</tr>
+			</tbody>
+		</table>
 	
-	<h1>Friends</h1>
-	<p th:text="${no_friends_msg}" />
-	<table id="leaderboard-table">
-		<tbody>
-		  <tr th:each="friend : ${friends}">
-			<td><a th:href="@{'/profile?id=' + ${friend.steamId64}}" href=""><img th:src="@{${friend.mediumAvatarUrl}}" /></a></td>
-			<td><a th:text="${friend.personaName}" th:href="@{'/profile?id=' + ${friend.steamId64}}" href=""></a></td>
-		  </tr>
-		</tbody>
-	  </table>
+
       </div>
     </div>
 	<!-- /.container -->
