@@ -127,11 +127,13 @@ public class ProfileController {
         if (profile.getCountryCode() != null && Application.steam_countries.has(profile.getCountryCode())) {
             JSONObject countryData = Application.steam_countries.getJSONObject(profile.getCountryCode());
             model.addAttribute("country", countryData.getString("name"));
+            model.addAttribute("country_code", profile.getCountryCode());
             System.out.println(profile.getCountryCode().toLowerCase() + ".png");
             model.addAttribute("country_flag", "/assets/images/country_flags/128/" + profile.getCountryCode().toLowerCase() + ".png");
         } else {
-            model.addAttribute("country", "");
-            model.addAttribute("country_flag", "/assets/images/country_flags/128/un.png");
+            model.addAttribute("United Nations", "");
+            model.addAttribute("country_code", "UN");
+            model.addAttribute("country_flag", "/assets/images/country_flags/un.png");
         }
 
         List<SteamGame> games = null;
@@ -173,8 +175,6 @@ public class ProfileController {
         }
         
         model.addAttribute("friends", friends);
-        //http://mikemontreal.ignorelist.com:6002/versus?id1=76561197997213801&id2=Nikolaos9029
-
 
         return "profile";
     }

@@ -38,7 +38,7 @@ public class IndexController extends WebMvcConfigurerAdapter {
 			}
 			else 
 			{
-				model.addAttribute("error", error);
+				model.addAttribute("error", "A Steam ID consists of only numbers or letters. No spaces");
 			}
 		}
 		
