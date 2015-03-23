@@ -43,9 +43,9 @@
         <h1>Start by searching for a Steam profile</h1>
         <p>You can enter a Steam ID64, a Steam Community profile ID, or a Steam Community profile URL</p>
 
-        <form action="#" th:action="@{/}" th:object="${steamProfile}" method="post">
-        <input type="text" th:field="*{userQuery}" />
-        <button type="submit">Submit</button>
+        <form class="form-inline" action="#" th:action="@{/}" th:object="${steamProfile}" method="post">
+        <input type="text" class="form-control" placeholder="ex: fireinthehole" th:field="*{userQuery}" />
+        <button class="btn btn-default" type="submit">Submit</button>
 
         <p th:text="${error}" />
         </form>

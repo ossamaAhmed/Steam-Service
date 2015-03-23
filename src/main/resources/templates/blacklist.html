@@ -42,12 +42,11 @@
 
       <div class="starter-template">
         <h1>Blacklist</h1>
-        <p>If you wish to permenantly remove your Steam profile from RankMySteam, enter your Steam user ID below to be added to the site's blacklist.</p>
+        <p>If you wish to permanently remove your Steam profile from RankMySteam, enter your Steam user ID below to be added to the site's blacklist.</p>
 
-        <form action="#" th:action="@{'/blacklist'}" th:object="${steamProfile}" method="post">
-        <input type="text" th:field="*{userQuery}" />
-        <button type="submit">Submit</button>
-
+        <form class="form-inline" action="#" th:action="@{'/blacklist'}" th:object="${steamProfile}" method="post">
+        <input type="text" class="form-control" placeholder="ex: fireinthehole" th:field="*{userQuery}" />
+        <button class="btn btn-default" type="submit">Submit</button>
         <p th:text="${error}" />
         </form>
       </div>
